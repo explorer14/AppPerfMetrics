@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using System.Reflection;
 
 namespace WebApplication37
 {
@@ -22,9 +23,14 @@ namespace WebApplication37
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddPerfMetricSender(
+            //    appGroup: "my api",
+            //    metricsPublisher: new ConsoleMetricsPublisher(),
+            //    assemblyToLoadAdditionalMetricsFrom: Assembly.GetExecutingAssembly(),
+            //    tags: new MetricTag("environment", "development"));
+
             services.AddPerfMetricSender(
                 appGroup: "my api",
-                metricsPublisher: new ConsoleMetricsPublisher(),
                 tags: new MetricTag("environment", "development"));
 
             services.AddControllers();
@@ -54,5 +60,17 @@ namespace WebApplication37
     {
         public void Count(NamedPerformanceMetric metric) =>
             System.Console.WriteLine(metric.ToString());
+    }
+
+    public class DummyMetric : NamedPerformanceMetric
+    {
+        public DummyMetric(string appGroup, params MetricTag[] tags)
+            : base(appGroup, tags)
+        {
+        }
+
+        public override long Count => 777;
+
+        public override string Name => "dummy";
     }
 }
