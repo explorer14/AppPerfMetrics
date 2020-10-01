@@ -1,8 +1,8 @@
-﻿using StatsdClient;
+﻿using AppPerformanceMetricsSender.PerformanceMetrics;
+using StatsdClient;
 using System.Linq;
-using WebApplication37;
 
-namespace AppPerformanceMetricsSender
+namespace AppPerformanceMetricsSender.Publishing
 {
     public class DataDogMetricsPublisher : IMetricsPublisher
     {
@@ -13,7 +13,7 @@ namespace AppPerformanceMetricsSender
             this.config = config;
         }
 
-        public void Count(NamedPerfMetric metric)
+        public void Count(NamedPerformanceMetric metric)
         {
             using (var dd = new DogStatsdService())
             {

@@ -1,4 +1,5 @@
-using AppPerformanceMetricsSender;
+using AppPerformanceMetricsSender.PerformanceMetrics;
+using AppPerformanceMetricsSender.Publishing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -58,7 +59,7 @@ namespace WebApplication37
 
     public class ConsoleMetricsPublisher : IMetricsPublisher
     {
-        public void Count(NamedPerfMetric metric) => 
+        public void Count(NamedPerformanceMetric metric) => 
             System.Console.WriteLine(metric.ToString());
     }
 }
