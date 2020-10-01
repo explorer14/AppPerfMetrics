@@ -1,6 +1,9 @@
-﻿using AppPerformanceMetricsSender.Publishing;
+﻿using AppPerformanceMetricsSender.PerformanceMetrics;
+using AppPerformanceMetricsSender.Publishing;
 using Microsoft.Extensions.DependencyInjection;
 using StatsdClient;
+using System;
+using System.Collections.Generic;
 
 namespace AppPerformanceMetricsSender.Extensions
 {
@@ -8,7 +11,9 @@ namespace AppPerformanceMetricsSender.Extensions
     {
         public static IServiceCollection AddPerfMetricSender(
             this IServiceCollection services,
-            IMetricsPublisher metricsPublisher = null)
+            string appGroup,
+            IMetricsPublisher metricsPublisher = null,
+            params MetricTag[] tags)
         {
             if (metricsPublisher == null)
                 services.AddSingleton<IMetricsPublisher>(svc =>
@@ -20,6 +25,9 @@ namespace AppPerformanceMetricsSender.Extensions
                         }));
             else
                 services.AddSingleton(svc => metricsPublisher);
+
+            services.AddTransient(
+                svc => AvailablePerfMetrics.All(appGroup, tags));
 
             services.AddHostedService<PerfMetricSenderService>();
 

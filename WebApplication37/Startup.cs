@@ -1,4 +1,3 @@
-using AppPerformanceMetricsSender;
 using AppPerformanceMetricsSender.Extensions;
 using AppPerformanceMetricsSender.PerformanceMetrics;
 using AppPerformanceMetricsSender.Publishing;
@@ -8,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using StatsdClient;
 
 namespace WebApplication37
 {
@@ -24,7 +22,10 @@ namespace WebApplication37
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddPerfMetricSender();
+            services.AddPerfMetricSender(
+                appGroup: "my api",
+                tags: new MetricTag("environment", "development"));
+
             services.AddControllers();
         }
 
@@ -50,7 +51,7 @@ namespace WebApplication37
 
     public class ConsoleMetricsPublisher : IMetricsPublisher
     {
-        public void Count(NamedPerformanceMetric metric) => 
+        public void Count(NamedPerformanceMetric metric) =>
             System.Console.WriteLine(metric.ToString());
     }
 }
