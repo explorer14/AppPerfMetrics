@@ -24,6 +24,7 @@ namespace WebApplication37
         {
             services.AddPerfMetricSender(
                 appGroup: "my api",
+                metricsPublisher: new ConsoleMetricsPublisher(),
                 tags: new MetricTag("environment", "development"));
 
             services.AddControllers();

@@ -1,5 +1,4 @@
-﻿using AppPerformanceMetricsSender.PerformanceMetrics;
-using AppPerformanceMetricsSender.Publishing;
+﻿using AppPerformanceMetricsSender.Publishing;
 using Microsoft.Extensions.DependencyInjection;
 using StatsdClient;
 using System;

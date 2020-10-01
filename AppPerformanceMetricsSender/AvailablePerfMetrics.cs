@@ -1,10 +1,11 @@
-﻿using AppPerformanceMetricsSender.Publishing;
+﻿using AppPerformanceMetricsSender.PerformanceMetrics;
+using AppPerformanceMetricsSender.Publishing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace AppPerformanceMetricsSender.PerformanceMetrics
+namespace AppPerformanceMetricsSender
 {
     public static class AvailablePerfMetrics
     {

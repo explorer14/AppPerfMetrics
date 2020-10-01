@@ -5,7 +5,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
     public class AllocatedMemoryInBytes : NamedPerformanceMetric
     {
-        public AllocatedMemoryInBytes(string appGroup, params MetricTag[] tags) 
+        public AllocatedMemoryInBytes(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)
         {
         }

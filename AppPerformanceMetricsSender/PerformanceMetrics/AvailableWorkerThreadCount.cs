@@ -1,5 +1,4 @@
 ﻿using AppPerformanceMetricsSender.Publishing;
-using System;
 using System.Threading;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
