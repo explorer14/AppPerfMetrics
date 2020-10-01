@@ -3,9 +3,9 @@ using System.Threading;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public class CurrentThreadPoolThreadCount : NamedPerformanceMetric
+    public class AvailableIOThreadCount : NamedPerformanceMetric
     {
-        public CurrentThreadPoolThreadCount(string appGroup, params MetricTag[] tags) 
+        public AvailableIOThreadCount(string appGroup, params MetricTag[] tags) 
             : base(appGroup, tags)
         {
         }

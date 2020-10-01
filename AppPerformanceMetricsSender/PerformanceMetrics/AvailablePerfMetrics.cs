@@ -10,7 +10,9 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
             {
                 new AllocatedMemoryInBytes("my api",
                     new MetricTag("environment", "development")),
-                new CurrentThreadPoolThreadCount("my api", 
+                new AvailableIOThreadCount("my api", 
+                    new MetricTag("environment", "development")),
+                new Gen0CollectionCount("my api", 
                     new MetricTag("environment", "development"))
             };
     }
