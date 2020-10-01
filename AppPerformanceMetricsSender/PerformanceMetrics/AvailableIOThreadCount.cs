@@ -19,6 +19,6 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
             } 
         }
 
-        public override string Name => $"{AppGroup}.availableiothreads";
+        public override string Name => "availableiothreads";
     }
 }

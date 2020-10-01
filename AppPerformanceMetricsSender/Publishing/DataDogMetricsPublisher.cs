@@ -18,7 +18,10 @@ namespace AppPerformanceMetricsSender.Publishing
             using (var dd = new DogStatsdService())
             {
                 dd.Configure(config);
-                dd.Counter(metric.Name, metric.Count, 1, metric.Tags.Select(x => $"{x.Key}:{x.Value}").ToArray());
+                dd.Counter(
+                    metric.FullyQualifiedName, 
+                    metric.Count, 1, 
+                    metric.Tags.Select(x => $"{x.Key}:{x.Value}").ToArray());
             }
         }
     }

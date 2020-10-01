@@ -17,13 +17,14 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
         }
 
         public abstract long Count { get; }
+        public string FullyQualifiedName => $"{AppGroup}.{Name}";
         public abstract string Name { get; }
         public MetricTag[] Tags { get; }
         protected string AppGroup { get; }
 
         public override string ToString()
         {
-            var statsDString = $"{Name}:{Count}|c|1";
+            var statsDString = $"{FullyQualifiedName}:{Count}|c|1";
 
             if (!string.IsNullOrWhiteSpace(tags))
                 statsDString += $"|#{tags}";

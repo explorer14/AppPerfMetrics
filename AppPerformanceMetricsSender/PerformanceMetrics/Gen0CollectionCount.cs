@@ -12,6 +12,6 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
 
         public override long Count => GC.CollectionCount(0);
 
-        public override string Name => $"{AppGroup}.gen0gccount";
+        public override string Name => "gen0gccount";
     }
 }

@@ -12,6 +12,6 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
 
         public override long Count => GC.GetTotalMemory(false);
 
-        public override string Name => $"{AppGroup}.allocatedmemorybytes";
+        public override string Name => "allocatedmemorybytes";
     }
 }
