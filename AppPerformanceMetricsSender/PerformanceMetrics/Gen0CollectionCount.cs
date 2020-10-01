@@ -3,7 +3,7 @@ using System;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public class Gen0CollectionCount : NamedPerformanceMetric
+    public sealed class Gen0CollectionCount : NamedPerformanceMetric
     {
         public Gen0CollectionCount(string appGroup, params MetricTag[] tags) 
             : base(appGroup, tags)

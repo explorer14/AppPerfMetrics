@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using StatsdClient;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace AppPerformanceMetricsSender.Extensions
 {
@@ -12,6 +13,7 @@ namespace AppPerformanceMetricsSender.Extensions
             this IServiceCollection services,
             string appGroup,
             IMetricsPublisher metricsPublisher = null,
+            Assembly assemblyToLoadAdditionalMetricsFrom = null,
             params MetricTag[] tags)
         {
             if (metricsPublisher == null)
@@ -26,7 +28,10 @@ namespace AppPerformanceMetricsSender.Extensions
                 services.AddSingleton(svc => metricsPublisher);
 
             services.AddTransient(
-                svc => AvailablePerfMetrics.All(appGroup, tags));
+                svc => AvailablePerformanceMetrics.All(
+                    appGroup, 
+                    assemblyToLoadAdditionalMetricsFrom, 
+                    tags));
 
             services.AddHostedService<PerfMetricSenderService>();
 

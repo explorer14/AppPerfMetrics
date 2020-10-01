@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public class AvailableWorkerThreadCount : NamedPerformanceMetric
+    public sealed class AvailableWorkerThreadCount : NamedPerformanceMetric
     {
         public AvailableWorkerThreadCount(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)

@@ -7,10 +7,11 @@ using System.Reflection;
 
 namespace AppPerformanceMetricsSender
 {
-    public static class AvailablePerfMetrics
+    public static class AvailablePerformanceMetrics
     {
         public static IReadOnlyCollection<NamedPerformanceMetric> All(
             string appGroup,
+            Assembly assemblyToLoadAdditionalMetricsFrom = null,
             params MetricTag[] tags)
         {
             var metricTypes = Assembly
@@ -19,6 +20,13 @@ namespace AppPerformanceMetricsSender
                 .Where(x =>
                     x.IsSubclassOf(typeof(NamedPerformanceMetric)))
                 .ToList();
+
+            if (assemblyToLoadAdditionalMetricsFrom != null)
+                metricTypes.AddRange(assemblyToLoadAdditionalMetricsFrom
+                    .GetTypes()
+                    .Where(x =>
+                        x.IsSubclassOf(typeof(NamedPerformanceMetric)))
+                    .ToList());
 
             var availableMetrics = new List<NamedPerformanceMetric>();
 

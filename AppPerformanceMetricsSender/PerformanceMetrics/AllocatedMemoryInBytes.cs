@@ -3,7 +3,7 @@ using System;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public class AllocatedMemoryInBytes : NamedPerformanceMetric
+    public sealed class AllocatedMemoryInBytes : NamedPerformanceMetric
     {
         public AllocatedMemoryInBytes(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)

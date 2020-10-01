@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public class AvailableIOThreadCount : NamedPerformanceMetric
+    public sealed class AvailableIOThreadCount : NamedPerformanceMetric
     {
         public AvailableIOThreadCount(string appGroup, params MetricTag[] tags) 
             : base(appGroup, tags)
