@@ -1,3 +1,5 @@
+using AppPerformanceMetricsSender;
+using AppPerformanceMetricsSender.Extensions;
 using AppPerformanceMetricsSender.PerformanceMetrics;
 using AppPerformanceMetricsSender.Publishing;
 using Microsoft.AspNetCore.Builder;
@@ -22,18 +24,7 @@ namespace WebApplication37
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IMetricsPublisher>(svc =>
-                new DataDogMetricsPublisher(
-                    new StatsdConfig
-                    {
-                        StatsdServerName = "localhost",
-                        StatsdPort = 8125,
-                    }));
-
-            //services.AddSingleton<IMetricsPublisher>(svc =>
-            //    new ConsoleMetricsPublisher());
-
-            services.AddHostedService<PerfMetricSenderService>();
+            services.AddPerfMetricSender();
             services.AddControllers();
         }
 

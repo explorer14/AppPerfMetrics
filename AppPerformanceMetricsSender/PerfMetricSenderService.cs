@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WebApplication37
+namespace AppPerformanceMetricsSender
 {
     public class PerfMetricSenderService : BackgroundService
     {
