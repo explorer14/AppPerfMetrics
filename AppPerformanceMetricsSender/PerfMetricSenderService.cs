@@ -25,6 +25,7 @@ namespace AppPerformanceMetricsSender
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            Console.WriteLine("Starting perf metrics collection...");
             timer.Elapsed += (sender, args) =>
             {
                 foreach (var metric in availablePerformanceMetrics)

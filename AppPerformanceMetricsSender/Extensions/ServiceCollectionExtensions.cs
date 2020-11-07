@@ -1,8 +1,6 @@
 ﻿using AppPerformanceMetricsSender.Publishing;
 using Microsoft.Extensions.DependencyInjection;
 using StatsdClient;
-using System;
-using System.Collections.Generic;
 using System.Reflection;
 
 namespace AppPerformanceMetricsSender.Extensions
@@ -29,8 +27,8 @@ namespace AppPerformanceMetricsSender.Extensions
 
             services.AddTransient(
                 svc => AvailablePerformanceMetrics.All(
-                    appGroup, 
-                    assemblyToLoadAdditionalMetricsFrom, 
+                    appGroup,
+                    assemblyToLoadAdditionalMetricsFrom,
                     tags));
 
             services.AddHostedService<PerfMetricSenderService>();
