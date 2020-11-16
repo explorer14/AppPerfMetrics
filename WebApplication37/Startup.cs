@@ -36,7 +36,6 @@ namespace WebApplication37
                 },
                 tags: new MetricTag("environment", "development"));
 
-
             services.AddControllers();
         }
 
