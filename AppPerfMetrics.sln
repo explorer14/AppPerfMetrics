@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppPerformanceMetricsSender
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{04D6FB08-8D07-4108-8FB6-6811BDCCE0FC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E4D033D6-F188-4CEE-B7F5-9BFDEC8F5743}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppPerformanceMetricsSender.Tests", "tests\AppPerformanceMetricsSender.Tests\AppPerformanceMetricsSender.Tests.csproj", "{52417971-7E6B-4634-8E72-8FE89565C411}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +27,17 @@ Global
 		{62377B71-DA7E-4079-8E5B-33008611D04B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62377B71-DA7E-4079-8E5B-33008611D04B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62377B71-DA7E-4079-8E5B-33008611D04B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52417971-7E6B-4634-8E72-8FE89565C411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52417971-7E6B-4634-8E72-8FE89565C411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52417971-7E6B-4634-8E72-8FE89565C411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52417971-7E6B-4634-8E72-8FE89565C411}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{62377B71-DA7E-4079-8E5B-33008611D04B} = {04D6FB08-8D07-4108-8FB6-6811BDCCE0FC}
+		{52417971-7E6B-4634-8E72-8FE89565C411} = {E4D033D6-F188-4CEE-B7F5-9BFDEC8F5743}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {094A66BD-F2A8-462C-97FC-D0A336521240}

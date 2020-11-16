@@ -80,6 +80,8 @@ namespace AppPerformanceMetricsSender.Extensions
                     assemblyToLoadAdditionalMetricsFrom,
                     tags));
 
+            services.AddSingleton<PerfMetricPublisherService>();
+
             services.AddHostedService<PerfMetricSenderService>();
         }
     }
