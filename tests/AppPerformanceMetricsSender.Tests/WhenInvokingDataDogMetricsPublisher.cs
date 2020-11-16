@@ -19,7 +19,7 @@ namespace AppPerformanceMetricsSender.Tests
         public void ShouldThrowIfDogstatsDServiceIsNull()
         {
             Assert.Throws<ArgumentException>(() => new DataDogMetricsPublisher(
-                null, 
+                null,
                 FakeStatsDConfig.Default));
         }
 

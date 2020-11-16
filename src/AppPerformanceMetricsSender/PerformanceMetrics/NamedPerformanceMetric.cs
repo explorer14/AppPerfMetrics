@@ -14,8 +14,8 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
                 throw new ArgumentException("App group cannot be null or empty", nameof(appGroup));
 
             AppGroup = appGroup.ToLower().Replace(" ", "_");
-            this.tags = tags != null ? 
-                string.Join(",", tags.Select(x => $"{x.Key}:{x.Value}")) : 
+            this.tags = tags != null ?
+                string.Join(",", tags.Select(x => $"{x.Key}:{x.Value}")) :
                 string.Empty;
             Tags = tags;
         }

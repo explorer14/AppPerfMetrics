@@ -5,7 +5,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
     public sealed class Gen0CollectionCount : NamedPerformanceMetric
     {
-        public Gen0CollectionCount(string appGroup, params MetricTag[] tags) 
+        public Gen0CollectionCount(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)
         {
         }

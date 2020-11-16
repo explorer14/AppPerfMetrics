@@ -5,18 +5,18 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
     public sealed class AvailableIOThreadCount : NamedPerformanceMetric
     {
-        public AvailableIOThreadCount(string appGroup, params MetricTag[] tags) 
+        public AvailableIOThreadCount(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)
         {
         }
 
-        public override long Count 
+        public override long Count
         {
             get
             {
                 ThreadPool.GetAvailableThreads(out _, out var iocp);
-                return iocp; 
-            } 
+                return iocp;
+            }
         }
 
         public override string Name => "availableiothreads";

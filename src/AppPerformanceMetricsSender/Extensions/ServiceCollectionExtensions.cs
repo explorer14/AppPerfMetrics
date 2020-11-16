@@ -16,7 +16,7 @@ namespace AppPerformanceMetricsSender.Extensions
             params MetricTag[] tags)
         {
             if (datadogConfig == null)
-                datadogConfig = new DatadogConfig 
+                datadogConfig = new DatadogConfig
                 {
                     Host = "localhost",
                     Port = 8125
@@ -48,7 +48,7 @@ namespace AppPerformanceMetricsSender.Extensions
             Assembly assemblyToLoadAdditionalMetricsFrom = null,
             params MetricTag[] tags)
         {
-            services.AddSingleton(svc => metricsPublisher ?? 
+            services.AddSingleton(svc => metricsPublisher ??
                 new ConsoleMetricsPublisher());
 
             AddMetricsAndHostedService(
