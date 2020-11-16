@@ -1,7 +1,6 @@
 ﻿using AppPerformanceMetricsSender.Publishing;
 using Microsoft.Extensions.DependencyInjection;
 using StatsdClient;
-using System;
 using System.Reflection;
 
 namespace AppPerformanceMetricsSender.Extensions
@@ -49,10 +48,8 @@ namespace AppPerformanceMetricsSender.Extensions
             Assembly assemblyToLoadAdditionalMetricsFrom = null,
             params MetricTag[] tags)
         {
-            if (metricsPublisher == null)
-                metricsPublisher = new ConsoleMetricsPublisher();
-
-            services.AddSingleton(svc => metricsPublisher);
+            services.AddSingleton(svc => metricsPublisher ?? 
+                new ConsoleMetricsPublisher());
 
             AddMetricsAndHostedService(
                 services,
