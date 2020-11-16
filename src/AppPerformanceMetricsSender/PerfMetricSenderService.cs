@@ -1,4 +1,5 @@
-﻿using AppPerformanceMetricsSender.PerformanceMetrics;
+﻿using AppPerformanceMetricsSender.Extensions;
+using AppPerformanceMetricsSender.PerformanceMetrics;
 using AppPerformanceMetricsSender.Publishing;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -16,9 +17,10 @@ namespace AppPerformanceMetricsSender
 
         public PerfMetricSenderService(
             IMetricsPublisher metricPublisher,
-            IReadOnlyCollection<NamedPerformanceMetric> performanceMetrics)
+            IReadOnlyCollection<NamedPerformanceMetric> performanceMetrics,
+            PerfMetricsSenderOptions options)
         {
-            timer = new System.Timers.Timer(10_000);
+            timer = new System.Timers.Timer(options.MetricCollectionInterval);
             this.metricPublisher = metricPublisher;
             availablePerformanceMetrics = performanceMetrics;
         }

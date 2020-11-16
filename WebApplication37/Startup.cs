@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using System.Reflection;
 
 namespace WebApplication37
 {
@@ -31,7 +30,12 @@ namespace WebApplication37
 
             services.AddPerfMetricSender(
                 appGroup: "my api",
+                options: new PerfMetricsSenderOptions
+                {
+                    MetricCollectionInterval = 2000
+                },
                 tags: new MetricTag("environment", "development"));
+
 
             services.AddControllers();
         }
