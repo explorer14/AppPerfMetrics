@@ -18,8 +18,8 @@ namespace AppPerformanceMetricsSender.Tests
             var gen0collection = new Gen0CollectionCount(appGroup, metricTags);
             var gen1collection = new Gen1CollectionCount(appGroup, metricTags);
             var gen2collection = new Gen2CollectionCount(appGroup, metricTags);
-            var availableIOThreads = new AvailableIOThreadCount(appGroup, metricTags);
-            var availableWorkerThreads = new AvailableWorkerThreadCount(appGroup, metricTags);
+            var availableIOThreads = new TotalAvailableThreadCount(appGroup, metricTags);
+            var availableWorkerThreads = new TotalAvailableThreadCount(appGroup, metricTags);
             var allocatedMemory = new AllocatedMemoryInBytes(appGroup, metricTags);
 
             gen0collection.ShouldConformToStatsD(appGroup, expectedTagString);
@@ -38,8 +38,8 @@ namespace AppPerformanceMetricsSender.Tests
             Assert.Throws<ArgumentException>(() => new Gen0CollectionCount(appGroup, metricTags));
             Assert.Throws<ArgumentException>(() => new Gen1CollectionCount(appGroup, metricTags));
             Assert.Throws<ArgumentException>(() => new Gen2CollectionCount(appGroup, metricTags));
-            Assert.Throws<ArgumentException>(() => new AvailableIOThreadCount(appGroup, metricTags));
-            Assert.Throws<ArgumentException>(() => new AvailableWorkerThreadCount(appGroup, metricTags));
+            Assert.Throws<ArgumentException>(() => new TotalAvailableThreadCount(appGroup, metricTags));
+            Assert.Throws<ArgumentException>(() => new TotalAvailableThreadCount(appGroup, metricTags));
             Assert.Throws<ArgumentException>(() => new AllocatedMemoryInBytes(appGroup, metricTags));
         }
     }

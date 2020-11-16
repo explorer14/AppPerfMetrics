@@ -13,7 +13,7 @@ namespace AppPerformanceMetricsSender.Tests
         {
             var availableMetrics = AvailablePerformanceMetrics.All("test");
 
-            availableMetrics.Should().HaveCount(6);
+            availableMetrics.Should().HaveCount(8);
         }
 
         [Fact]
@@ -22,7 +22,7 @@ namespace AppPerformanceMetricsSender.Tests
             var availableMetrics = AvailablePerformanceMetrics.All(
                 "test", Assembly.GetAssembly(typeof(WhenLoadingAvailablePerfMetrics)));
 
-            availableMetrics.Should().HaveCountGreaterThan(6);
+            availableMetrics.Should().HaveCountGreaterThan(8);
         }
     }
 
