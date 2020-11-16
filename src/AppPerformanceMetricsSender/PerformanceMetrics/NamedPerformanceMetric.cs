@@ -1,4 +1,5 @@
 ﻿using AppPerformanceMetricsSender.Publishing;
+using System;
 using System.Linq;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
@@ -9,6 +10,9 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
 
         protected NamedPerformanceMetric(string appGroup, params MetricTag[] tags)
         {
+            if (string.IsNullOrWhiteSpace(appGroup))
+                throw new ArgumentException("App group cannot be null or empty", nameof(appGroup));
+
             AppGroup = appGroup.ToLower().Replace(" ", "_");
             this.tags = tags != null ? 
                 string.Join(",", tags.Select(x => $"{x.Key}:{x.Value}")) : 

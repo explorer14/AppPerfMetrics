@@ -28,7 +28,7 @@ namespace WebApplication37
             //    assemblyToLoadAdditionalMetricsFrom: Assembly.GetExecutingAssembly(),
             //    tags: new MetricTag("environment", "development"));
 
-            services.AddPerfMetricSender(
+            services.AddPerfMetricSenderWithDataDog(
                 appGroup: "my api",
                 options: new PerfMetricsSenderOptions
                 {
