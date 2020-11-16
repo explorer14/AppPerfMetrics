@@ -4,9 +4,6 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-variables:
-- group: Traxpense-Variable-Groups
-
 steps:
   - task: Cake@0
     inputs:
