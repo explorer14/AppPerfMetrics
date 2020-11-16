@@ -56,12 +56,6 @@ namespace WebApplication37
         }
     }
 
-    public class ConsoleMetricsPublisher : IMetricsPublisher
-    {
-        public void Count(NamedPerformanceMetric metric) =>
-            System.Console.WriteLine(metric.ToString());
-    }
-
     public class DummyMetric : NamedPerformanceMetric
     {
         public DummyMetric(string appGroup, params MetricTag[] tags)
