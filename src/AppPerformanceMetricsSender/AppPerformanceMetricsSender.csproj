@@ -3,7 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageVersion>0.0.4</PackageVersion>
-    <PackageTags>performance metrics;datadog;c#</PackageTags>  
+    <PackageTags>performance metrics;datadog;c#</PackageTags>
+    <Authors>© Aman Agrawal</Authors>
+    <Description>Pulls common performance metrics from any .NET Core app and publishes to DataDog (by default). Metrics covered by default: Gen 0/1/2 collections, available io threads, available worker threads, allocated memory (to the app that is)</Description>
   </PropertyGroup>
 
   <ItemGroup>
