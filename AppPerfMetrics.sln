@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication37", "WebApplication37\WebApplication37.csproj", "{CE4936AC-9C32-4778-AEAC-22DDFD593AC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication37", "WebApplication37\WebApplication37.csproj", "{CE4936AC-9C32-4778-AEAC-22DDFD593AC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppPerformanceMetricsSender", "AppPerformanceMetricsSender\AppPerformanceMetricsSender.csproj", "{62377B71-DA7E-4079-8E5B-33008611D04B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppPerformanceMetricsSender", "src\AppPerformanceMetricsSender\AppPerformanceMetricsSender.csproj", "{62377B71-DA7E-4079-8E5B-33008611D04B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{04D6FB08-8D07-4108-8FB6-6811BDCCE0FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{62377B71-DA7E-4079-8E5B-33008611D04B} = {04D6FB08-8D07-4108-8FB6-6811BDCCE0FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {094A66BD-F2A8-462C-97FC-D0A336521240}
