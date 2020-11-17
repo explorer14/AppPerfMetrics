@@ -22,19 +22,25 @@ namespace WebApplication37
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddPerfMetricSender(
-            //    appGroup: "my api",
-            //    metricsPublisher: new ConsoleMetricsPublisher(),
-            //    assemblyToLoadAdditionalMetricsFrom: Assembly.GetExecutingAssembly(),
-            //    tags: new MetricTag("environment", "development"));
+            var dataDogConfig = Configuration.GetSection("DataDogconfig").Get<DatadogConfig>();
 
             services.AddPerfMetricSenderWithDataDog(
                 appGroup: "my api",
+                datadogConfig: dataDogConfig,
                 options: new PerfMetricsSenderOptions
                 {
                     MetricCollectionInterval = 2000
                 },
                 tags: new MetricTag("environment", "development"));
+
+
+            //services.AddPerfMetricSender(
+            //    appGroup: "my api",                
+            //    options: new PerfMetricsSenderOptions
+            //    {
+            //        MetricCollectionInterval = 2000
+            //    },
+            //    tags: new MetricTag("environment", "development"));
 
             services.AddControllers();
         }
