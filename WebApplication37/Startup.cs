@@ -35,7 +35,7 @@ namespace WebApplication37
 
 
             //services.AddPerfMetricSender(
-            //    appGroup: "my api",                
+            //    appGroup: "my api",
             //    options: new PerfMetricsSenderOptions
             //    {
             //        MetricCollectionInterval = 2000

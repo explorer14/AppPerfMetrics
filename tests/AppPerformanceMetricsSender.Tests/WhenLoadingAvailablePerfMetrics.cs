@@ -8,12 +8,14 @@ namespace AppPerformanceMetricsSender.Tests
 {
     public class WhenLoadingAvailablePerfMetrics
     {
+        private const int NUMBER_OF_AVAILABLE_METRICS = 9;
+
         [Fact]
         public void ShouldAlwaysLoadAllDefaultMetrics()
         {
             var availableMetrics = AvailablePerformanceMetrics.All("test");
 
-            availableMetrics.Should().HaveCount(8);
+            availableMetrics.Should().HaveCount(NUMBER_OF_AVAILABLE_METRICS);
         }
 
         [Fact]
@@ -22,7 +24,7 @@ namespace AppPerformanceMetricsSender.Tests
             var availableMetrics = AvailablePerformanceMetrics.All(
                 "test", Assembly.GetAssembly(typeof(WhenLoadingAvailablePerfMetrics)));
 
-            availableMetrics.Should().HaveCountGreaterThan(8);
+            availableMetrics.Should().HaveCountGreaterThan(NUMBER_OF_AVAILABLE_METRICS);
         }
     }
 
