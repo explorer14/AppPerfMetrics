@@ -3,15 +3,15 @@ using System;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public sealed class AllocatedMemoryInBytes : NamedPerformanceMetric
+    public sealed class ManagedHeapAllocatedMemoryInBytes : NamedPerformanceMetric
     {
-        public AllocatedMemoryInBytes(string appGroup, params MetricTag[] tags)
+        public ManagedHeapAllocatedMemoryInBytes(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)
         {
         }
 
         public override long Count => GC.GetTotalMemory(false);
 
-        public override string Name => "allocatedmemorybytes";
+        public override string Name => "managedheapallocatedmemorybytes";
     }
 }

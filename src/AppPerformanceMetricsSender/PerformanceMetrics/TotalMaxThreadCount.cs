@@ -3,9 +3,9 @@ using System.Threading;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public sealed class TotalAvailableThreadCount : NamedPerformanceMetric
+    public sealed class TotalMaxThreadCount : NamedPerformanceMetric
     {
-        public TotalAvailableThreadCount(string appGroup, params MetricTag[] tags)
+        public TotalMaxThreadCount(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)
         {
         }
@@ -19,6 +19,6 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
             }
         }
 
-        public override string Name => "totalavailablethreads";
+        public override string Name => "totalmaxthreads";
     }
 }
