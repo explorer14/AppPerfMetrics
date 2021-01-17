@@ -13,6 +13,7 @@ var artifactDirPath = "./artifacts/";
 var packagePublishDirPath = "./publish/";
 var semVer = CreateSemVer(1,0,0);
 var solutionFilePath = "./AppPerfMetrics.sln";
+var nugetApiKey = EnvironmentVariable("NUGET_API_KEY");
 
 Setup(ctx=>
 {
@@ -100,6 +101,16 @@ Task("PushToNuget")
 	.IsDependentOn("Pack")
 	.Does(()=>
 {
+    PushToNugetFeed(
+        "https://skynetcode.pkgs.visualstudio.com/_packaging/skynetpackagefeed/nuget/v3/index.json", 
+        "gibberish");
+        
+    PushToNugetFeed("https://api.nuget.org/v3/index.json",
+        nugetApiKey);
+});
+
+void PushToNugetFeed(string source, string apiKey)
+{
     var files = GetFiles("./artifacts/AppPerformanceMetricsSender.*.nupkg");
 
     foreach(var file in files)
@@ -107,14 +118,14 @@ Task("PushToNuget")
         Information(file.FullPath);
         var settings = new DotNetCoreNuGetPushSettings
         {
-            Source = "https://skynetcode.pkgs.visualstudio.com/_packaging/skynetpackagefeed/nuget/v3/index.json",
-            ApiKey = "gibberish",
+            Source = source,
+            ApiKey = apiKey,
             SkipDuplicate = true
         };
 
         DotNetCoreNuGetPush(file.FullPath, settings);
     }
-});
+}
 
 Task("Pack")
 	.IsDependentOn("Test")

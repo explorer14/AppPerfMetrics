@@ -5,11 +5,12 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-  - task: Cake@0
+  - task: PowerShell@2
+    displayName: 'Publish to Nuget'
     inputs:
-      script: 'build.cake'
-      target: 'PushToNuget'
-      verbosity: 'Verbose'
+      filePath: 'build.ps1'
+      arguments: '-Target PushToNuget'
+      pwsh: true
     env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
