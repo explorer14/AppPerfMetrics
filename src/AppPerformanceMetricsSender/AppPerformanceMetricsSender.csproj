@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>3.0.0-alpha1</PackageVersion>
+    <PackageVersion>3.0.0-alpha2</PackageVersion>
     <PackageTags>performance metrics;datadog;c#</PackageTags>
     <Authors>© Aman Agrawal</Authors>
     <Description>Pulls common performance metrics from any .NET Core app and publishes to DataDog (by default). Metrics covered by default: Gen 0/1/2 collections, app private memory, thread count etc</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DogStatsD-CSharp-Client" Version="6.0.0" />
+    <PackageReference Include="DogStatsD-CSharp-Client" Version="5.1.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />    
   </ItemGroup>
 
