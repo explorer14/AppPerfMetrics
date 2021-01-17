@@ -4,6 +4,9 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+variables:
+  - group: 'cicdapp-variable-groups'
+
 steps:
   - task: PowerShell@2
     displayName: 'Publish to Nuget'
