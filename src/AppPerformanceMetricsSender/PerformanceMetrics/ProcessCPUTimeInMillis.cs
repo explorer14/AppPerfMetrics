@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public class ProcessCPUTimeInMillis : NamedPerformanceMetric
+    internal class ProcessCPUTimeInMillis : NamedPerformanceMetric
     {
         public ProcessCPUTimeInMillis(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)

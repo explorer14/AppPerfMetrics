@@ -2,7 +2,7 @@
 
 namespace AppPerformanceMetricsSender.Publishing
 {
-    public class ConsoleMetricsPublisher : IMetricsPublisher
+    internal class ConsoleMetricsPublisher : IMetricsPublisher
     {
         public void Count(NamedPerformanceMetric metric) =>
             System.Console.WriteLine(metric.ToString());

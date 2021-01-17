@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace AppPerformanceMetricsSender.Publishing
 {
-    public class DataDogMetricsPublisher : IMetricsPublisher
+    internal class DataDogMetricsPublisher : IMetricsPublisher
     {
         private readonly StatsdConfig config;
         private readonly IDogStatsd dogStatsdService;

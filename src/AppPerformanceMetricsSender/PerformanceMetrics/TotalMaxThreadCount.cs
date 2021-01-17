@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public sealed class TotalMaxThreadCount : NamedPerformanceMetric
+    internal sealed class TotalMaxThreadCount : NamedPerformanceMetric
     {
         public TotalMaxThreadCount(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)

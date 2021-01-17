@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public class ProcessPrivateMemoryInBytes : NamedPerformanceMetric
+    internal class ProcessPrivateMemoryInBytes : NamedPerformanceMetric
     {
         public ProcessPrivateMemoryInBytes(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)

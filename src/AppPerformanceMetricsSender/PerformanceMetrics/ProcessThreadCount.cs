@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public class ProcessThreadCount : NamedPerformanceMetric
+    internal class ProcessThreadCount : NamedPerformanceMetric
     {
         public ProcessThreadCount(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)

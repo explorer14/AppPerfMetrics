@@ -3,7 +3,7 @@ using System;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public sealed class ManagedHeapAllocatedMemoryInBytes : NamedPerformanceMetric
+    internal sealed class ManagedHeapAllocatedMemoryInBytes : NamedPerformanceMetric
     {
         public ManagedHeapAllocatedMemoryInBytes(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)

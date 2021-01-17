@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppPerformanceMetricsSender
 {
-    public class PerfMetricSenderService : BackgroundService
+    internal class PerfMetricSenderService : BackgroundService
     {
         private readonly PerfMetricPublisherService publisherService;
         private System.Timers.Timer timer;

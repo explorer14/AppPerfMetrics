@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AppPerformanceMetricsSender
 {
-    public class PerfMetricPublisherService
+    internal class PerfMetricPublisherService
     {
         private readonly IMetricsPublisher metricsPublisher;
         private readonly IReadOnlyCollection<NamedPerformanceMetric> availablePerfMetrics;

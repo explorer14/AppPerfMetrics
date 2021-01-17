@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace AppPerformanceMetricsSender
 {
-    public static class AvailablePerformanceMetrics
+    internal static class AvailablePerformanceMetrics
     {
         public static IReadOnlyCollection<NamedPerformanceMetric> All(
             string appGroup,
