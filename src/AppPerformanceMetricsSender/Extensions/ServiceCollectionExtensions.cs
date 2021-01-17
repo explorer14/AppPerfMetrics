@@ -7,6 +7,17 @@ namespace AppPerformanceMetricsSender.Extensions
 {
     public static class ServiceCollectionExtensions
     {
+        /// <summary>
+        /// Add performance metrics sender that publishes to DataDog
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="appGroup">Identifier string for the application</param>
+        /// <param name="datadogConfig"></param>
+        /// <param name="options"></param>
+        /// <param name="assemblyToLoadAdditionalMetricsFrom">
+        /// Load additional metrics from your custom assembly</param>
+        /// <param name="tags">Custom tags that will always be publised to DataDog</param>
+        /// <returns><see cref="IServiceCollection"/></returns>
         public static IServiceCollection AddPerfMetricSenderWithDataDog(
             this IServiceCollection services,
             string appGroup,
@@ -40,6 +51,16 @@ namespace AppPerformanceMetricsSender.Extensions
             return services;
         }
 
+        /// <summary>
+        /// Add performance metrics sender that publishes to console in DogStatsD format
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="appGroup">Identifier string for the application</param>
+        /// <param name="options"></param>
+        /// <param name="assemblyToLoadAdditionalMetricsFrom">
+        /// Load additional metrics from your custom assembly</param>
+        /// <param name="tags">Custom tags that will always be publised to DataDog</param>
+        /// <returns></returns>
         public static IServiceCollection AddPerfMetricSender(
             this IServiceCollection services,
             string appGroup,
@@ -88,12 +109,21 @@ namespace AppPerformanceMetricsSender.Extensions
 
     public class PerfMetricsSenderOptions
     {
+        /// <summary>
+        /// Interval in milliseconds to collect and publish metrics at
+        /// </summary>
         public int MetricCollectionInterval { get; set; }
     }
 
     public class DatadogConfig
     {
+        /// <summary>
+        /// DataDog server
+        /// </summary>
         public string Host { get; set; }
+        /// <summary>
+        /// DataDog port (default is 8125)
+        /// </summary>
         public int Port { get; set; }
     }
 }
