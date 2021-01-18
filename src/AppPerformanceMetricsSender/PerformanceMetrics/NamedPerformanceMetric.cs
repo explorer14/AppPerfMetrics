@@ -59,7 +59,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
 
         public override string ToString()
         {
-            var statsDString = $"{FullyQualifiedName}:{Count}|c|1";
+            var statsDString = $"{FullyQualifiedName}:{Count}|g|1";
 
             if (!string.IsNullOrWhiteSpace(tags))
                 statsDString += $"|#{tags}";
