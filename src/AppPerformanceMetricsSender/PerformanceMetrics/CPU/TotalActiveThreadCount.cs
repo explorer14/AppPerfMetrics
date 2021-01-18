@@ -1,7 +1,7 @@
 ﻿using AppPerformanceMetricsSender.Publishing;
 using System.Threading;
 
-namespace AppPerformanceMetricsSender.PerformanceMetrics
+namespace AppPerformanceMetricsSender.PerformanceMetrics.CPU
 {
     internal class TotalActiveThreadCount : NamedPerformanceMetric
     {
@@ -16,7 +16,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
             {
                 ThreadPool.GetMaxThreads(out var maxWorkerThreads, out var maxIoThreads);
                 ThreadPool.GetAvailableThreads(out var availableWorkerThreads, out var availableIoThreads);
-                return (maxWorkerThreads - availableWorkerThreads) + (maxIoThreads - availableIoThreads);
+                return maxWorkerThreads - availableWorkerThreads + (maxIoThreads - availableIoThreads);
             }
         }
 

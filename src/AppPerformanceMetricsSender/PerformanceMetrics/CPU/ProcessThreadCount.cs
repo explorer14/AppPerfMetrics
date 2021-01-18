@@ -1,7 +1,7 @@
 ﻿using AppPerformanceMetricsSender.Publishing;
 using System.Diagnostics;
 
-namespace AppPerformanceMetricsSender.PerformanceMetrics
+namespace AppPerformanceMetricsSender.PerformanceMetrics.CPU
 {
     internal class ProcessThreadCount : NamedPerformanceMetric
     {

@@ -1,7 +1,7 @@
 ﻿using AppPerformanceMetricsSender.Publishing;
 using System;
 
-namespace AppPerformanceMetricsSender.PerformanceMetrics
+namespace AppPerformanceMetricsSender.PerformanceMetrics.Memory
 {
     internal sealed class Gen0CollectionCount : NamedPerformanceMetric
     {
