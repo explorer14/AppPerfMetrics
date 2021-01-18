@@ -1,6 +1,6 @@
 ﻿namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
-    public interface IPerformanceMetric
+    internal interface IPerformanceMetric
     {
         long Count { get; }
 
