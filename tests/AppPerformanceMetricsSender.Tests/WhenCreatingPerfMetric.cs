@@ -42,7 +42,7 @@ namespace AppPerformanceMetricsSender.Tests
             perfMetric
                 .ToString()
                 .Should()
-                .Be($"{expectedAppGroup}.{perfMetric.Name}:{perfMetric.Count}|c|1|#{expectedTagString}");
+                .Be($"{expectedAppGroup}.{perfMetric.Name}:{perfMetric.Count}|g|1|#{expectedTagString}");
     }
 
     internal class StubMetric : NamedPerformanceMetric

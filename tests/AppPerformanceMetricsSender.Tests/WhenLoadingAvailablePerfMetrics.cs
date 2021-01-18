@@ -25,6 +25,7 @@ namespace AppPerformanceMetricsSender.Tests
                 "test", Assembly.GetAssembly(typeof(WhenLoadingAvailablePerfMetrics)));
 
             availableMetrics.Should().HaveCountGreaterThan(NUMBER_OF_AVAILABLE_METRICS);
+            availableMetrics.Should().Contain(x => x.GetType().Name == typeof(DummyMetric).Name);
         }
     }
 
