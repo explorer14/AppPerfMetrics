@@ -16,15 +16,9 @@ namespace AppPerformanceMetricsSender.Tests
             var appGroup = "test";
             var metricTags = new[] { new MetricTag("a", "b"), new MetricTag("c", "d") };
             var expectedTagString = "a:b,c:d";
-            var gen0collection = new Gen0CollectionCount(appGroup, metricTags);
-            var gen1collection = new Gen1CollectionCount(appGroup, metricTags);
-            var gen2collection = new Gen2CollectionCount(appGroup, metricTags);
-            var allocatedMemory = new ManagedHeapAllocatedMemoryInBytes(appGroup, metricTags);
+            var stubMetric = new StubMetric(appGroup, metricTags);
 
-            gen0collection.ShouldConformToStatsD(appGroup, expectedTagString);
-            gen1collection.ShouldConformToStatsD(appGroup, expectedTagString);
-            gen2collection.ShouldConformToStatsD(appGroup, expectedTagString);
-            allocatedMemory.ShouldConformToStatsD(appGroup, expectedTagString);
+            stubMetric.ShouldConformToStatsD(appGroup, expectedTagString);
         }
 
         [Fact]
@@ -49,5 +43,17 @@ namespace AppPerformanceMetricsSender.Tests
                 .ToString()
                 .Should()
                 .Be($"{expectedAppGroup}.{perfMetric.Name}:{perfMetric.Count}|c|1|#{expectedTagString}");
+    }
+
+    internal class StubMetric : NamedPerformanceMetric
+    {
+        public StubMetric(string appGroup, params MetricTag[] tags) :
+            base(appGroup, tags)
+        {
+        }
+
+        public override long Count => 200;
+
+        public override string Name => "stub";
     }
 }
