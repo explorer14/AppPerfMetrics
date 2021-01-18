@@ -27,6 +27,15 @@ namespace AppPerformanceMetricsSender.Tests
             availableMetrics.Should().HaveCountGreaterThan(NUMBER_OF_AVAILABLE_METRICS);
             availableMetrics.Should().Contain(x => x.GetType().Name == typeof(DummyMetric).Name);
         }
+
+        [Fact]
+        public void ShouldIgnoreDuplicateMetrics()
+        {
+            var availableMetrics = AvailablePerformanceMetrics.All(
+                "test", Assembly.GetAssembly(typeof(NamedPerformanceMetric)));
+
+            availableMetrics.Should().HaveCount(NUMBER_OF_AVAILABLE_METRICS);            
+        }
     }
 
     internal class DummyMetric : NamedPerformanceMetric

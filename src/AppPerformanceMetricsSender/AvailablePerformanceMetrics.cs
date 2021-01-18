@@ -19,18 +19,25 @@ namespace AppPerformanceMetricsSender
                 .GetTypes()
                 .Where(x =>
                     x.IsSubclassOf(typeof(NamedPerformanceMetric)))
-                .ToList();
+                .ToDictionary(x=>x.FullName, y=>y);
 
             if (assemblyToLoadAdditionalMetricsFrom != null)
-                metricTypes.AddRange(assemblyToLoadAdditionalMetricsFrom
+            {
+                var customMetricTypes = assemblyToLoadAdditionalMetricsFrom
                     .GetTypes()
                     .Where(x =>
                         x.IsSubclassOf(typeof(NamedPerformanceMetric)))
-                    .ToList());
+                    .ToList();
+
+                foreach (var type in customMetricTypes)
+                    if (!metricTypes.ContainsKey(type.FullName))
+                        metricTypes.Add(type.FullName, type);
+            }
+                
 
             var availableMetrics = new List<NamedPerformanceMetric>();
 
-            foreach (var type in metricTypes)
+            foreach (var type in metricTypes.Values)
                 availableMetrics.Add(
                     (NamedPerformanceMetric)Activator.CreateInstance(
                         type, appGroup, tags));

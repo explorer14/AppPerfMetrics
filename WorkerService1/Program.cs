@@ -16,7 +16,8 @@ namespace WorkerService1
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
-                    services.AddPerfMetricSenderWithDataDog("my worker service", assemblyToLoadAdditionalMetricsFrom: Assembly.GetAssembly(typeof(NamedPerformanceMetric)));
+                    services.AddPerfMetricSenderWithDataDog("my worker service", 
+                        assemblyToLoadAdditionalMetricsFrom: Assembly.GetAssembly(typeof(NamedPerformanceMetric)));
                 });
     }
 }
