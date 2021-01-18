@@ -1,4 +1,5 @@
 using AppPerformanceMetricsSender.PerformanceMetrics;
+using AppPerformanceMetricsSender.PerformanceMetrics.Memory;
 using AppPerformanceMetricsSender.Publishing;
 using FluentAssertions;
 using System.Collections.Generic;
