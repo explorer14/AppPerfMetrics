@@ -1,6 +1,8 @@
 using AppPerformanceMetricsSender.Extensions;
+using AppPerformanceMetricsSender.PerformanceMetrics;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
 
 namespace WorkerService1
 {
@@ -14,7 +16,7 @@ namespace WorkerService1
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
-                    services.AddPerfMetricSenderWithDataDog("my worker service");
+                    services.AddPerfMetricSenderWithDataDog("my worker service", assemblyToLoadAdditionalMetricsFrom: Assembly.GetAssembly(typeof(NamedPerformanceMetric)));
                 });
     }
 }

@@ -112,7 +112,7 @@ namespace AppPerformanceMetricsSender.Extensions
         /// <summary>
         /// Interval in milliseconds to collect and publish metrics at
         /// </summary>
-        public int MetricCollectionInterval { get; set; }
+        public uint MetricCollectionInterval { get; set; }
     }
 
     public class DatadogConfig
