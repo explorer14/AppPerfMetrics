@@ -91,3 +91,36 @@ Its strongly recommended that you assign a unique enough identifier for your app
 for e.g. a `gen0gccount` for my web api `my api` with tags `tag1` and `tag2` with values `value1` and `value2` respectively will look like this:
 
 `my_api.gen0gccount:5|c|1|#tag1:value1,tag2:value2`
+
+## Custom Metrics
+
+Provide an implementation for the `NamedPerformanceMetric` base class and specify the assembly to load these custom metrics from, for e.g. say `DummyMetric` is defined in the host app with assembly name `WebApplication37`
+
+```
+public class DummyMetric : NamedPerformanceMetric
+{
+    public DummyMetric(string appGroup, params MetricTag[] tags)
+        : base(appGroup, tags)
+    {
+    }
+
+    public override long Count => 777;
+    public override string Name => "dummy";
+}
+```
+
+Then at bootstrap:
+
+```
+services.AddPerfMetricSenderWithDataDog(
+    appGroup: "my api",    
+    assemblyToLoadAdditionalMetricsFrom: Assembly.GetEntryAssembly());
+```
+
+Or if the metric is defined in a different assembly for e.g. `Infrastructure`, then:
+
+```
+services.AddPerfMetricSenderWithDataDog(
+    appGroup: "my api",    
+    assemblyToLoadAdditionalMetricsFrom: Assembly.GetAssembly(typeof(DummyMetric))); // <-- this type could be any type that's defined in that assembly, doesn't have to be a metric type
+```
