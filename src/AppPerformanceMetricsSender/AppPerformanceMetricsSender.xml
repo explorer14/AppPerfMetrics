@@ -44,5 +44,46 @@
             DataDog port (default is 8125)
             </summary>
         </member>
+        <member name="T:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric">
+            <summary>
+            Base class for performance metrics. Inherit from this class to define
+            custom metrics for your app.
+            </summary>
+        </member>
+        <member name="M:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.#ctor(System.String,AppPerformanceMetricsSender.Publishing.MetricTag[])">
+            <summary>
+            Instantiate the base class
+            </summary>
+            <param name="appGroup">Identifier for the app</param>
+            <param name="tags">Custom tags i.e. name value pairs to associate with this metric</param>
+        </member>
+        <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.Count">
+            <summary>
+            The value of this metric. For time based metrics prefer [milliseconds] to give yourself
+            more fine grained value, for space based metrics prefer [bytes]. Any conversion to coarser
+            grained units like MB, seconds, minutes etc should be done on the monitoring platform
+            </summary>
+        </member>
+        <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.FullyQualifiedName">
+            <summary>
+            Used by the publisher to fully identify the metric
+            </summary>
+        </member>
+        <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.Name">
+            <summary>
+            Name for the metric. Will be lower cased and spaces removed
+            </summary>
+        </member>
+        <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.Tags">
+            <summary>
+            Tags to associate with the metric for e.g. environment, 
+            country etc.
+            </summary>
+        </member>
+        <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.AppGroup">
+            <summary>
+            App identifier string for e.g. "finance-api"
+            </summary>
+        </member>
     </members>
 </doc>
