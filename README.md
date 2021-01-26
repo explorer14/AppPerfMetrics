@@ -2,7 +2,7 @@
 
 Collects various performance metrics from your .NET Core app and pushes them to DataDog at regular intervals.
 
-[![](https://img.shields.io/static/v1?label=Nuget&message=v%205.0.0&color=brightgreen&style=for-the-badge&logo=nuget&link=https://www.nuget.org/packages/AppPerformanceMetricsSender/5.0.0)](https://www.nuget.org/packages/AppPerformanceMetricsSender/5.0.0)
+[![](https://img.shields.io/static/v1?label=Nuget&message=v%206.0.0&color=brightgreen&style=for-the-badge&logo=nuget&link=https://www.nuget.org/packages/AppPerformanceMetricsSender/6.0.0)](https://www.nuget.org/packages/AppPerformanceMetricsSender/6.0.0)
 
 # Architecture
 
