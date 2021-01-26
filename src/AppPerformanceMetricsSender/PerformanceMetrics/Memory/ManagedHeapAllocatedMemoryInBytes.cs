@@ -10,7 +10,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.Memory
         {
         }
 
-        public override long Count => GC.GetTotalMemory(false);
+        public override long Value => GC.GetTotalMemory(false);
 
         public override string Name => "managedheapallocatedmemorybytes";
     }

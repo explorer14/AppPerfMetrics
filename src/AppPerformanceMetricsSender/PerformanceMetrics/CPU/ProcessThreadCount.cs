@@ -10,7 +10,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.CPU
         {
         }
 
-        public override long Count => Process.GetCurrentProcess().Threads.Count;
+        public override long Value => Process.GetCurrentProcess().Threads.Count;
 
         public override string Name => "processthreadcount";
     }

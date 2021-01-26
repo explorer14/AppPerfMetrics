@@ -35,7 +35,7 @@ namespace AppPerformanceMetricsSender.Publishing
             {
                 dogStatsdService.Gauge(
                         metric.FullyQualifiedName,
-                        metric.Count, 1,
+                        metric.Value, 1,
                         metric.Tags.Select(x => $"{x.Key}:{x.Value}").ToArray());
             }
         }

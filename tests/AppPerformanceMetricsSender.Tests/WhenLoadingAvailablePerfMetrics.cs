@@ -45,7 +45,7 @@ namespace AppPerformanceMetricsSender.Tests
         {
         }
 
-        public override long Count => 1;
+        public override long Value => 1;
 
         public override string Name => "dummy";
     }

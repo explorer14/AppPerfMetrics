@@ -44,7 +44,7 @@ namespace AppPerformanceMetricsSender.Tests
         {
         }
 
-        public override long Count => 999;
+        public override long Value => 999;
 
         public override string Name => "fakester";
     }

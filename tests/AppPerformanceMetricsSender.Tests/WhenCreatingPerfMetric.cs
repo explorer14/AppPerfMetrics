@@ -42,7 +42,7 @@ namespace AppPerformanceMetricsSender.Tests
             perfMetric
                 .ToString()
                 .Should()
-                .Be($"{expectedAppGroup}.{perfMetric.Name}:{perfMetric.Count}|g|1|#{expectedTagString}");
+                .Be($"{expectedAppGroup}.{perfMetric.Name}:{perfMetric.Value}|g|1|#{expectedTagString}");
     }
 
     internal class StubMetric : NamedPerformanceMetric
@@ -52,7 +52,7 @@ namespace AppPerformanceMetricsSender.Tests
         {
         }
 
-        public override long Count => 200;
+        public override long Value => 200;
 
         public override string Name => "stub";
     }

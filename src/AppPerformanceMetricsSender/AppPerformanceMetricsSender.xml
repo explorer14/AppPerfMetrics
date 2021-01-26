@@ -57,7 +57,7 @@
             <param name="appGroup">Identifier for the app</param>
             <param name="tags">Custom tags i.e. name value pairs to associate with this metric</param>
         </member>
-        <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.Count">
+        <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.Value">
             <summary>
             The value of this metric. For time based metrics prefer [milliseconds] to give yourself
             more fine grained value, for space based metrics prefer [bytes]. Any conversion to coarser

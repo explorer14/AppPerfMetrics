@@ -2,7 +2,7 @@
 {
     internal interface IPerformanceMetric
     {
-        long Count { get; }
+        long Value { get; }
 
         string Name { get; }
     }

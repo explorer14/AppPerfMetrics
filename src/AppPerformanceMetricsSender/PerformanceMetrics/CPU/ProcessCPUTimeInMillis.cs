@@ -10,7 +10,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.CPU
         {
         }
 
-        public override long Count =>
+        public override long Value =>
             (long)Process.GetCurrentProcess().TotalProcessorTime.TotalMilliseconds;
 
         public override string Name => "processcputimemillis";

@@ -10,7 +10,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.Memory
         {
         }
 
-        public override long Count => Process.GetCurrentProcess().PrivateMemorySize64;
+        public override long Value => Process.GetCurrentProcess().PrivateMemorySize64;
 
         public override string Name => "processprivatememorybytes";
     }

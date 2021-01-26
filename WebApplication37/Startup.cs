@@ -73,7 +73,7 @@ namespace WebApplication37
         {
         }
 
-        public override long Count => 777;
+        public override long Value => 777;
 
         public override string Name => "dummy";
     }

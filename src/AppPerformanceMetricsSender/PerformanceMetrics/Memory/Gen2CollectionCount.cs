@@ -10,7 +10,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.Memory
         {
         }
 
-        public override long Count => GC.CollectionCount(2);
+        public override long Value => GC.CollectionCount(2);
 
         public override string Name => "gen2gccount";
     }

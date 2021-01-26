@@ -34,7 +34,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
         /// more fine grained value, for space based metrics prefer [bytes]. Any conversion to coarser
         /// grained units like MB, seconds, minutes etc should be done on the monitoring platform
         /// </summary>
-        public abstract long Count { get; }
+        public abstract long Value { get; }
 
         /// <summary>
         /// Used by the publisher to fully identify the metric
@@ -59,7 +59,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
 
         public override string ToString()
         {
-            var statsDString = $"{FullyQualifiedName}:{Count}|g|1";
+            var statsDString = $"{FullyQualifiedName}:{Value}|g|1";
 
             if (!string.IsNullOrWhiteSpace(tags))
                 statsDString += $"|#{tags}";
