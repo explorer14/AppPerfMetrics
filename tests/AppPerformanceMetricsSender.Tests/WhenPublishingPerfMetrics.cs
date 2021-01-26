@@ -31,7 +31,7 @@ namespace AppPerformanceMetricsSender.Tests
         public List<NamedPerformanceMetric> Metrics { get; internal set; } =
             new List<NamedPerformanceMetric>();
 
-        public void Count(NamedPerformanceMetric metric)
+        public void Publish(NamedPerformanceMetric metric)
         {
             Metrics.Add(metric);
         }

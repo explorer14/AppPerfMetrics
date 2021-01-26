@@ -29,7 +29,7 @@ namespace AppPerformanceMetricsSender.Publishing
             dogStatsdService.Configure(config);
         }
 
-        public void Count(NamedPerformanceMetric metric)
+        public void Publish(NamedPerformanceMetric metric)
         {
             if (metric != null)
             {

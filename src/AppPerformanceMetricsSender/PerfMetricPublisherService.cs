@@ -22,7 +22,7 @@ namespace AppPerformanceMetricsSender
         {
             foreach (var metric in availablePerfMetrics)
             {
-                metricsPublisher.Count(metric);
+                metricsPublisher.Publish(metric);
             }
 
             return Task.CompletedTask;

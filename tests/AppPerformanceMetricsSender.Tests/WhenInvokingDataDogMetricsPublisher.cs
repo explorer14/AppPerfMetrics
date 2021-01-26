@@ -31,7 +31,7 @@ namespace AppPerformanceMetricsSender.Tests
                 mockDog.Object,
                 FakeStatsDConfig.Default);
 
-            publisher.Count(null);
+            publisher.Publish(null);
             mockDog.Verify(x =>
                 x.Counter(
                     It.IsAny<string>(),

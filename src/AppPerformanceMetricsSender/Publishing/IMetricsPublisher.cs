@@ -4,6 +4,6 @@ namespace AppPerformanceMetricsSender.Publishing
 {
     public interface IMetricsPublisher
     {
-        void Count(NamedPerformanceMetric metric);
+        void Publish(NamedPerformanceMetric metric);
     }
 }
