@@ -8,7 +8,7 @@ namespace AppPerformanceMetricsSender.Tests
 {
     public class WhenLoadingAvailablePerfMetrics
     {
-        private const int NUMBER_OF_AVAILABLE_METRICS = 8;
+        private const int NUMBER_OF_AVAILABLE_METRICS = 9;
 
         [Fact]
         public void ShouldAlwaysLoadAllDefaultMetrics()
