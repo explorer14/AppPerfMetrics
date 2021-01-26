@@ -15,7 +15,7 @@ namespace AppPerformanceMetricsSender
             PerfMetricPublisherService publisherService,
             PerfMetricsSenderOptions options)
         {
-            timer = new System.Timers.Timer(options.MetricCollectionInterval);
+            timer = new System.Timers.Timer(options.MetricCollectionIntervalInMilliseconds);
             this.publisherService = publisherService;
         }
 

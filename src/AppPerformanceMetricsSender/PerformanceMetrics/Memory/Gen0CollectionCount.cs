@@ -4,7 +4,7 @@ using System;
 namespace AppPerformanceMetricsSender.PerformanceMetrics.Memory
 {
     internal sealed class Gen0CollectionCount : NamedPerformanceMetric
-    {
+    {        
         public Gen0CollectionCount(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)
         {

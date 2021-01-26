@@ -31,7 +31,7 @@ namespace WebApplication37
                 datadogConfig: dataDogConfig,
                 options: new PerfMetricsSenderOptions
                 {
-                    MetricCollectionInterval = 2000
+                    MetricCollectionIntervalInMilliseconds = 2000
                 }, assemblyToLoadAdditionalMetricsFrom: Assembly.GetAssembly(typeof(DummyMetric2)));
 
 

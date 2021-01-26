@@ -17,7 +17,7 @@ namespace WorkerService1
                 {
                     services.AddHostedService<Worker>();
                     services.AddPerfMetricSenderWithDataDog("my worker service", 
-                        options: new PerfMetricsSenderOptions { MetricCollectionInterval = 2000 },
+                        options: new PerfMetricsSenderOptions { MetricCollectionIntervalInMilliseconds = 2000 },
                         assemblyToLoadAdditionalMetricsFrom: Assembly.GetAssembly(typeof(NamedPerformanceMetric)));
                 });
     }

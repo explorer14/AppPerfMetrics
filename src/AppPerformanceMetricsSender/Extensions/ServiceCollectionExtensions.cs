@@ -92,7 +92,7 @@ namespace AppPerformanceMetricsSender.Extensions
             services.AddSingleton(options ??
                 new PerfMetricsSenderOptions
                 {
-                    MetricCollectionInterval = 10_000
+                    MetricCollectionIntervalInMilliseconds = 10_000
                 });
 
             services.AddTransient(
@@ -112,7 +112,7 @@ namespace AppPerformanceMetricsSender.Extensions
         /// <summary>
         /// Interval in milliseconds to collect and publish metrics at
         /// </summary>
-        public uint MetricCollectionInterval { get; set; }
+        public uint MetricCollectionIntervalInMilliseconds { get; set; }
     }
 
     public class DatadogConfig

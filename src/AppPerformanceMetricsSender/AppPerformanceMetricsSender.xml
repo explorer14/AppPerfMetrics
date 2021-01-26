@@ -29,7 +29,7 @@
             <param name="tags">Custom tags that will always be publised to DataDog</param>
             <returns></returns>
         </member>
-        <member name="P:AppPerformanceMetricsSender.Extensions.PerfMetricsSenderOptions.MetricCollectionInterval">
+        <member name="P:AppPerformanceMetricsSender.Extensions.PerfMetricsSenderOptions.MetricCollectionIntervalInMilliseconds">
             <summary>
             Interval in milliseconds to collect and publish metrics at
             </summary>
