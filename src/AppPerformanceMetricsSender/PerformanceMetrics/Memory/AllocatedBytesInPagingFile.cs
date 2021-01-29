@@ -1,23 +1,26 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using AppPerformanceMetricsSender.PerformanceMetrics;
 using AppPerformanceMetricsSender.Publishing;
 
-internal class VirtualMemoryAllocatedInBytes : NamedPerformanceMetric
+internal sealed class AllocatedBytesInPagingFile : NamedPerformanceMetric
 {
     private Process appProcess;
-    public VirtualMemoryAllocatedInBytes(string appGroup, params MetricTag[] tags)
+
+    public AllocatedBytesInPagingFile(string appGroup, params MetricTag[] tags)
         : base(appGroup, tags)
     {
         appProcess = Process.GetCurrentProcess();
     }
-    
+
     public override long Value
     {
         get
         {
             appProcess.Refresh();
-            return appProcess.VirtualMemorySize64;
+
+            return appProcess.PagedMemorySize64;
         }
     }
-    public override string Name => "virtualmemorybytesallocated";
+
+    public override string Name => "allocatedbytesinpagingfile";
 }
