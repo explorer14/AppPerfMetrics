@@ -5,12 +5,22 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.Memory
 {
     internal class ProcessPrivateMemoryInBytes : NamedPerformanceMetric
     {
+        private Process appProcess;
+
         public ProcessPrivateMemoryInBytes(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)
         {
+            appProcess = Process.GetCurrentProcess();
         }
 
-        public override long Value => Process.GetCurrentProcess().PrivateMemorySize64;
+        public override long Value
+        {
+            get
+            {
+                appProcess.Refresh();
+                return appProcess.PrivateMemorySize64;
+            }
+        }
 
         public override string Name => "processprivatememorybytes";
     }

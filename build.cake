@@ -105,8 +105,8 @@ Task("PushToNuget")
         "https://skynetcode.pkgs.visualstudio.com/_packaging/skynetpackagefeed/nuget/v3/index.json", 
         "gibberish");
         
-    PushToNugetFeed("https://api.nuget.org/v3/index.json",
-        nugetApiKey);
+    //PushToNugetFeed("https://api.nuget.org/v3/index.json",
+    //    nugetApiKey);
 });
 
 void PushToNugetFeed(string source, string apiKey)
