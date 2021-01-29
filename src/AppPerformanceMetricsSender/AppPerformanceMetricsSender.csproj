@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>6.0.0</PackageVersion>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PackageVersion>7.0.0</PackageVersion>
     <PackageTags>performance metrics;datadog;c#</PackageTags>
     <Authors>© Aman Agrawal</Authors>
     <Description>Pulls common performance metrics from any .NET Core app and publishes to DataDog (by default). Metrics covered by default: Gen 0/1/2 collections, app private memory, thread count etc</Description>

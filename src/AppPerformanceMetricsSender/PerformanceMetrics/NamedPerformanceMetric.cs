@@ -1,6 +1,5 @@
 ﻿using AppPerformanceMetricsSender.Publishing;
 using System;
-using System.Linq;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
@@ -10,22 +9,17 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
     /// </summary>
     public abstract class NamedPerformanceMetric : IPerformanceMetric
     {
-        private readonly string tags;
-
         /// <summary>
         /// Instantiate the base class
         /// </summary>
-        /// <param name="appGroup">Identifier for the app</param>
+        /// <param name="appPrefix">Identifier for the app</param>
         /// <param name="tags">Custom tags i.e. name value pairs to associate with this metric</param>
-        protected NamedPerformanceMetric(string appGroup, params MetricTag[] tags)
+        protected NamedPerformanceMetric(string appPrefix, params MetricTag[] tags)
         {
-            if (string.IsNullOrWhiteSpace(appGroup))
-                throw new ArgumentException("App group cannot be null or empty", nameof(appGroup));
+            if (string.IsNullOrWhiteSpace(appPrefix))
+                throw new ArgumentException("App prefix cannot be null or empty", nameof(appPrefix));
 
-            AppGroup = appGroup.ToLower().Replace(" ", "_");
-            this.tags = tags != null ?
-                string.Join(",", tags.Select(x => $"{x.Key}:{x.Value}")) :
-                string.Empty;
+            AppGroup = appPrefix.ToLower().Replace(" ", "_");
             Tags = tags;
         }
 
@@ -47,7 +41,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
         public abstract string Name { get; }
 
         /// <summary>
-        /// Tags to associate with the metric for e.g. environment, 
+        /// Tags to associate with the metric for e.g. environment,
         /// country etc.
         /// </summary>
         public MetricTag[] Tags { get; }
@@ -56,15 +50,5 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
         /// App identifier string for e.g. "finance-api"
         /// </summary>
         protected string AppGroup { get; }
-
-        public override string ToString()
-        {
-            var statsDString = $"{FullyQualifiedName}:{Value}|g|1";
-
-            if (!string.IsNullOrWhiteSpace(tags))
-                statsDString += $"|#{tags}";
-
-            return statsDString;
-        }
     }
 }

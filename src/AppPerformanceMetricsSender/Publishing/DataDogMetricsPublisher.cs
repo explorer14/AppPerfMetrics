@@ -25,7 +25,6 @@ namespace AppPerformanceMetricsSender.Publishing
                 throw new ArgumentException(
                     "DataDog service cannot be null", nameof(dogStatsdService));
 
-            this.dogStatsdService = dogStatsdService;
             dogStatsdService.Configure(config);
         }
 
@@ -35,7 +34,8 @@ namespace AppPerformanceMetricsSender.Publishing
             {
                 dogStatsdService.Gauge(
                         metric.FullyQualifiedName,
-                        metric.Value, 1,
+                        metric.Value, 
+                        sampleRate:1,
                         metric.Tags.Select(x => $"{x.Key}:{x.Value}").ToArray());
             }
         }

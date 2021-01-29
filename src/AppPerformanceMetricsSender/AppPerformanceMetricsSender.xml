@@ -4,44 +4,20 @@
         <name>AppPerformanceMetricsSender</name>
     </assembly>
     <members>
-        <member name="M:AppPerformanceMetricsSender.Extensions.ServiceCollectionExtensions.AddPerfMetricSenderWithDataDog(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,AppPerformanceMetricsSender.Extensions.DatadogConfig,AppPerformanceMetricsSender.Extensions.PerfMetricsSenderOptions,System.Reflection.Assembly,AppPerformanceMetricsSender.Publishing.MetricTag[])">
+        <member name="M:AppPerformanceMetricsSender.Extensions.ServiceCollectionExtensions.AddPerformanceMetricSender(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,StatsdClient.StatsdConfig,AppPerformanceMetricsSender.Extensions.PerfMetricsSenderOptions,AppPerformanceMetricsSender.Publishing.MetricTag[])">
             <summary>
             Add performance metrics sender that publishes to DataDog
             </summary>
             <param name="services"></param>
-            <param name="appGroup">Identifier string for the application</param>
+            <param name="appPrefix">Identifier string for the application</param>
             <param name="datadogConfig"></param>
             <param name="options"></param>
-            <param name="assemblyToLoadAdditionalMetricsFrom">
-            Load additional metrics from your custom assembly</param>
             <param name="tags">Custom tags that will always be publised to DataDog</param>
             <returns><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/></returns>
-        </member>
-        <member name="M:AppPerformanceMetricsSender.Extensions.ServiceCollectionExtensions.AddPerfMetricSender(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,AppPerformanceMetricsSender.Extensions.PerfMetricsSenderOptions,AppPerformanceMetricsSender.Publishing.IMetricsPublisher,System.Reflection.Assembly,AppPerformanceMetricsSender.Publishing.MetricTag[])">
-            <summary>
-            Add performance metrics sender that publishes to console in DogStatsD format
-            </summary>
-            <param name="services"></param>
-            <param name="appGroup">Identifier string for the application</param>
-            <param name="options"></param>
-            <param name="assemblyToLoadAdditionalMetricsFrom">
-            Load additional metrics from your custom assembly</param>
-            <param name="tags">Custom tags that will always be publised to DataDog</param>
-            <returns></returns>
         </member>
         <member name="P:AppPerformanceMetricsSender.Extensions.PerfMetricsSenderOptions.MetricCollectionIntervalInMilliseconds">
             <summary>
             Interval in milliseconds to collect and publish metrics at
-            </summary>
-        </member>
-        <member name="P:AppPerformanceMetricsSender.Extensions.DatadogConfig.Host">
-            <summary>
-            DataDog server
-            </summary>
-        </member>
-        <member name="P:AppPerformanceMetricsSender.Extensions.DatadogConfig.Port">
-            <summary>
-            DataDog port (default is 8125)
             </summary>
         </member>
         <member name="T:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric">
@@ -54,7 +30,7 @@
             <summary>
             Instantiate the base class
             </summary>
-            <param name="appGroup">Identifier for the app</param>
+            <param name="appPrefix">Identifier for the app</param>
             <param name="tags">Custom tags i.e. name value pairs to associate with this metric</param>
         </member>
         <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.Value">
@@ -76,7 +52,7 @@
         </member>
         <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.Tags">
             <summary>
-            Tags to associate with the metric for e.g. environment, 
+            Tags to associate with the metric for e.g. environment,
             country etc.
             </summary>
         </member>

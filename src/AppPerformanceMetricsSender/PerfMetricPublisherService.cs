@@ -1,7 +1,6 @@
 ﻿using AppPerformanceMetricsSender.PerformanceMetrics;
 using AppPerformanceMetricsSender.Publishing;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace AppPerformanceMetricsSender
 {
@@ -18,14 +17,10 @@ namespace AppPerformanceMetricsSender
             this.availablePerfMetrics = availablePerfMetrics;
         }
 
-        public Task PublishAll()
+        public void PublishAll()
         {
             foreach (var metric in availablePerfMetrics)
-            {
                 metricsPublisher.Publish(metric);
-            }
-
-            return Task.CompletedTask;
         }
     }
 }

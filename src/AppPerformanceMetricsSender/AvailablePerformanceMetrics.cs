@@ -11,7 +11,6 @@ namespace AppPerformanceMetricsSender
     {
         public static IReadOnlyCollection<NamedPerformanceMetric> All(
             string appGroup,
-            Assembly assemblyToLoadAdditionalMetricsFrom = null,
             params MetricTag[] tags)
         {
             var metricTypes = Assembly
@@ -21,28 +20,12 @@ namespace AppPerformanceMetricsSender
                     x.IsSubclassOf(typeof(NamedPerformanceMetric)))
                 .ToDictionary(x=>x.FullName, y=>y);
 
-            if (assemblyToLoadAdditionalMetricsFrom != null)
-            {
-                var customMetricTypes = assemblyToLoadAdditionalMetricsFrom
-                    .GetTypes()
-                    .Where(x =>
-                        x.IsSubclassOf(typeof(NamedPerformanceMetric)))
-                    .ToList();
-
-                foreach (var type in customMetricTypes)
-                    if (!metricTypes.ContainsKey(type.FullName))
-                        metricTypes.Add(type.FullName, type);
-            }
-                
-
             var availableMetrics = new List<NamedPerformanceMetric>();
 
-            foreach (var type in metricTypes.Values)
-                availableMetrics.Add(
-                    (NamedPerformanceMetric)Activator.CreateInstance(
-                        type, appGroup, tags));
-
-            return availableMetrics;
+            return metricTypes.Values.Select(x => 
+                    Activator.CreateInstance(x, appGroup, tags))
+                .Cast<NamedPerformanceMetric>()
+                .ToList();
         }
     }
 }

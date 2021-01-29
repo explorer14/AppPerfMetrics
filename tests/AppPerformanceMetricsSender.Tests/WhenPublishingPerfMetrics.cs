@@ -1,9 +1,7 @@
 using AppPerformanceMetricsSender.PerformanceMetrics;
-using AppPerformanceMetricsSender.PerformanceMetrics.Memory;
 using AppPerformanceMetricsSender.Publishing;
 using FluentAssertions;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace AppPerformanceMetricsSender.Tests
@@ -11,16 +9,16 @@ namespace AppPerformanceMetricsSender.Tests
     public class WhenPublishingPerfMetrics
     {
         [Fact]
-        public async Task ShouldPushThemToMetricsPublisher()
+        public void ShouldPushThemToMetricsPublisher()
         {
-            var gen0CountMetric = new Gen0CollectionCount("test");
-            var fakeMetric = new FakeMetric("test", new MetricTag("bla", "hello"));
+            var fakeMetric1 = new FakeMetric1("test", new MetricTag("bla", "hello"));
+            var fakeMetric2 = new FakeMetric2("test");
             var stubPublisher = new StubMetricPublisher();
             var publisherService = new PerfMetricPublisherService(
                 stubPublisher,
-                new NamedPerformanceMetric[] { gen0CountMetric, fakeMetric });
+                new NamedPerformanceMetric[] { fakeMetric1, fakeMetric2 });
 
-            await publisherService.PublishAll();
+            publisherService.PublishAll();
 
             stubPublisher.Metrics.Should().HaveCount(2);
         }
@@ -37,9 +35,9 @@ namespace AppPerformanceMetricsSender.Tests
         }
     }
 
-    internal class FakeMetric : NamedPerformanceMetric
+    internal class FakeMetric1 : NamedPerformanceMetric
     {
-        public FakeMetric(string appGroup, params MetricTag[] tags)
+        public FakeMetric1(string appGroup, params MetricTag[] tags)
             : base(appGroup, tags)
         {
         }
@@ -47,5 +45,17 @@ namespace AppPerformanceMetricsSender.Tests
         public override long Value => 999;
 
         public override string Name => "fakester";
+    }
+
+    internal class FakeMetric2 : NamedPerformanceMetric
+    {
+        public FakeMetric2(string appGroup, params MetricTag[] tags)
+            : base(appGroup, tags)
+        {
+        }
+
+        public override long Value => 888;
+
+        public override string Name => "fakester2";
     }
 }

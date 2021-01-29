@@ -1,7 +1,6 @@
 ﻿using AppPerformanceMetricsSender.PerformanceMetrics;
 using AppPerformanceMetricsSender.Publishing;
 using FluentAssertions;
-using System.Reflection;
 using Xunit;
 
 namespace AppPerformanceMetricsSender.Tests
@@ -16,25 +15,6 @@ namespace AppPerformanceMetricsSender.Tests
             var availableMetrics = AvailablePerformanceMetrics.All("test");
 
             availableMetrics.Should().HaveCount(NUMBER_OF_AVAILABLE_METRICS);
-        }
-
-        [Fact]
-        public void ShouldAppendAssemblySpecificMetricsToAvailableMetrics()
-        {
-            var availableMetrics = AvailablePerformanceMetrics.All(
-                "test", Assembly.GetAssembly(typeof(WhenLoadingAvailablePerfMetrics)));
-
-            availableMetrics.Should().HaveCountGreaterThan(NUMBER_OF_AVAILABLE_METRICS);
-            availableMetrics.Should().Contain(x => x.GetType().Name == typeof(DummyMetric).Name);
-        }
-
-        [Fact]
-        public void ShouldIgnoreDuplicateMetrics()
-        {
-            var availableMetrics = AvailablePerformanceMetrics.All(
-                "test", Assembly.GetAssembly(typeof(NamedPerformanceMetric)));
-
-            availableMetrics.Should().HaveCount(NUMBER_OF_AVAILABLE_METRICS);            
         }
     }
 

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace AppPerformanceMetricsSender
 {
-    internal class PerfMetricSenderService : BackgroundService
+    internal class PerfMetricSenderService : IHostedService
     {
-        private readonly PerfMetricPublisherService publisherService;
         private System.Timers.Timer timer;
 
         public PerfMetricSenderService(
@@ -16,19 +15,20 @@ namespace AppPerformanceMetricsSender
             PerfMetricsSenderOptions options)
         {
             timer = new System.Timers.Timer(options.MetricCollectionIntervalInMilliseconds);
-            this.publisherService = publisherService;
+            timer.Elapsed += (sender, args) =>
+                publisherService.PublishAll();
         }
 
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        public Task StartAsync(CancellationToken cancellationToken)
         {
             Console.WriteLine("Starting perf metrics collection...");
-            timer.Elapsed += async (sender, args) =>
-            {
-                await publisherService.PublishAll();
-            };
-
             timer.Start();
+            return Task.CompletedTask;
+        }
 
+        public Task StopAsync(CancellationToken cancellationToken)
+        {
+            timer.Stop();
             return Task.CompletedTask;
         }
     }
