@@ -15,38 +15,73 @@ This package assumes that you have DataDog agent installed on your host and you 
 The quick set up uses the following defaults:
 
 - DataDog host: `localhost` and port: `8125`. If you are running on EC2 or Azure VM instances, chances are your DD agent is locally hosted.
-- `PerfMetricsSenderOptions` defaults to `60 seconds` collection interval. This should ideally be the flushing frequency of the DataDog agent for correlated metrics.
+- `PerformanceMetricsSenderOptions` defaults to `60 second` collection interval.
 - `MetricTags` is empty i.e. no tags are published by default.
 
-Just call the `AddPerformanceMetricSender` extension method on `ServiceCollection` instance during bootstrap, and pass in an app identifier:
+## Setting up StatsdConfig in appsettings.json
 
-### Worker Service
+**It's strongly recommended that you assign a unique enough identifier for your app so its metrics can be disambiguated from other similar metrics from other apps. To do this use, the `Prefix` property of the StatsdConfig class as shown below:**
 
 ```
-public class Program
+"DataDogConfig": {
+    "Prefix": "my api" ,
+    "StatsdServerName": "localhost",
+    "StatsdPort": 8125
+  }
+```
+
+Hydrate an instance of `StatsdConfig` in your startup:
+
+```
+var dataDogConfig = Configuration.GetSection("DataDogconfig").Get<StatsdConfig>();
+```
+
+And pass it to the `AddPerformanceMetricSender()` method.
+
+For e.g.:
+
+```
+public void ConfigureServices(IServiceCollection services)
 {
-    public static void Main(string[] args) => 
-        CreateHostBuilder(args).Build().Run();
+    var dataDogConfig = Configuration.GetSection("DataDogconfig").Get<StatsdConfig>();
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureServices((hostContext, services) =>
-            {
-                services.AddHostedService<Worker>();
+    services.AddPerformanceMetricSender(datadogConfig: dataDogConfig);
 
-                services.AddPerformanceMetricSender("my worker service"); // <-- Add this line
-            });
+    //..
 }
 ```
 
-### Web API
+You can also just instantiate `StatsdConfig` in code:
+
+```
+public void ConfigureServices(IServiceCollection services)
+{
+    var dataDogConfig = new StatsdConfig
+    {
+        Prefix = "my api",
+        StatsdServerName = "localhost",
+        StatsdPort = 8125
+    };
+
+    services.AddPerformanceMetricSender(datadogConfig: dataDogConfig);
+
+    //..
+}
+```
+
+### Add With Custom Metric Tags
+
+These tags will always be included in the metrics sent to DataDog, as an e.g.
 
 ```
 public void ConfigureServices(IServiceCollection services)
 {    
-    services.AddPerformanceMetricSender(appPrefix: "my api");
+    var dataDogConfig = Configuration.GetSection("DataDogconfig").Get<StatsdConfig>();
+    services.AddPerformanceMetricSender(
+        datadogConfig: dataDogConfig
+        tags: new MetricTag("api version", "1"));
     
-    //...other services
+    //...
 }
 ```
 
@@ -73,8 +108,8 @@ The metrics published to DataDog use the `StatsD` [format](https://docs.datadogh
 
 Its strongly recommended that you assign a unique enough identifier for your app so its metrics can be disambiuguated from other similar metrics from other apps. The sender will automatically replace blank spaces in the identifier with underscores `_` before publishing them to DataDog, this is because DataDog doesn't allow empty spaces in metric names. The format of the StatsD string used by this package looks like this:
 
-`{AppIdentifier}.{MetricName}:{Value}|g|1|{Comma Separated Tags}`
+`{AppIdentifier}.perf.{MetricName}:{Value}|g|1|{Comma Separated Tags}`
 
 for e.g. a `gen0gccount` for my web api `my api` with tags `tag1` and `tag2` with values `value1` and `value2` respectively will look like this:
 
-`my_api.gen0gccount:5|c|1|#tag1:value1,tag2:value2`
+`my_api.perf.gen0gccount:5|c|1|#tag1:value1,tag2:value2`
