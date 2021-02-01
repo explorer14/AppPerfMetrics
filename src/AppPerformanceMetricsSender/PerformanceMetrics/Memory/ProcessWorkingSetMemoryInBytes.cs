@@ -6,8 +6,8 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.Memory
     internal class ProcessWorkingSetMemoryInBytes : NamedPerformanceMetric
     {
         private Process appProcess;
-        public ProcessWorkingSetMemoryInBytes(string appGroup, params MetricTag[] tags) 
-            : base(appGroup, tags)
+        public ProcessWorkingSetMemoryInBytes(params MetricTag[] tags) 
+            : base(tags)
         {
             appProcess = Process.GetCurrentProcess();
         }

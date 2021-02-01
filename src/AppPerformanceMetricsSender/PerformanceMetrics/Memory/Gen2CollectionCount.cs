@@ -5,8 +5,8 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.Memory
 {
     internal sealed class Gen2CollectionCount : NamedPerformanceMetric
     {
-        public Gen2CollectionCount(string appGroup, params MetricTag[] tags)
-            : base(appGroup, tags)
+        public Gen2CollectionCount(params MetricTag[] tags)
+            : base(tags)
         {
         }
 

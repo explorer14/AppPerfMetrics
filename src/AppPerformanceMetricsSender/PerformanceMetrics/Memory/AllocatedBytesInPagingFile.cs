@@ -6,8 +6,8 @@ internal sealed class AllocatedBytesInPagingFile : NamedPerformanceMetric
 {
     private Process appProcess;
 
-    public AllocatedBytesInPagingFile(string appGroup, params MetricTag[] tags)
-        : base(appGroup, tags)
+    public AllocatedBytesInPagingFile(params MetricTag[] tags)
+        : base(tags)
     {
         appProcess = Process.GetCurrentProcess();
     }

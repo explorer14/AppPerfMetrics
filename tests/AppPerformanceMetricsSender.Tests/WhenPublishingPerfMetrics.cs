@@ -11,8 +11,8 @@ namespace AppPerformanceMetricsSender.Tests
         [Fact]
         public void ShouldPushThemToMetricsPublisher()
         {
-            var fakeMetric1 = new FakeMetric1("test", new MetricTag("bla", "hello"));
-            var fakeMetric2 = new FakeMetric2("test");
+            var fakeMetric1 = new FakeMetric1(new MetricTag("bla", "hello"));
+            var fakeMetric2 = new FakeMetric2();
             var stubPublisher = new StubMetricPublisher();
             var publisherService = new PerfMetricPublisherService(
                 stubPublisher,
@@ -37,8 +37,8 @@ namespace AppPerformanceMetricsSender.Tests
 
     internal class FakeMetric1 : NamedPerformanceMetric
     {
-        public FakeMetric1(string appGroup, params MetricTag[] tags)
-            : base(appGroup, tags)
+        public FakeMetric1(params MetricTag[] tags)
+            : base(tags)
         {
         }
 
@@ -49,8 +49,8 @@ namespace AppPerformanceMetricsSender.Tests
 
     internal class FakeMetric2 : NamedPerformanceMetric
     {
-        public FakeMetric2(string appGroup, params MetricTag[] tags)
-            : base(appGroup, tags)
+        public FakeMetric2(params MetricTag[] tags)
+            : base(tags)
         {
         }
 

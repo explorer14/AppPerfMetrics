@@ -1,6 +1,4 @@
-﻿using AppPerformanceMetricsSender.PerformanceMetrics;
-using AppPerformanceMetricsSender.Publishing;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
 
 namespace AppPerformanceMetricsSender.Tests
@@ -12,21 +10,9 @@ namespace AppPerformanceMetricsSender.Tests
         [Fact]
         public void ShouldAlwaysLoadAllDefaultMetrics()
         {
-            var availableMetrics = AvailablePerformanceMetrics.All("test");
+            var availableMetrics = AvailablePerformanceMetrics.All();
 
             availableMetrics.Should().HaveCount(NUMBER_OF_AVAILABLE_METRICS);
         }
-    }
-
-    internal class DummyMetric : NamedPerformanceMetric
-    {
-        public DummyMetric(string appGroup, params MetricTag[] tags)
-            : base(appGroup, tags)
-        {
-        }
-
-        public override long Value => 1;
-
-        public override string Name => "dummy";
     }
 }

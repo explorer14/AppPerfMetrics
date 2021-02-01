@@ -4,12 +4,11 @@
         <name>AppPerformanceMetricsSender</name>
     </assembly>
     <members>
-        <member name="M:AppPerformanceMetricsSender.Extensions.ServiceCollectionExtensions.AddPerformanceMetricSender(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,StatsdClient.StatsdConfig,AppPerformanceMetricsSender.Extensions.PerfMetricsSenderOptions,AppPerformanceMetricsSender.Publishing.MetricTag[])">
+        <member name="M:AppPerformanceMetricsSender.Extensions.ServiceCollectionExtensions.AddPerformanceMetricSender(Microsoft.Extensions.DependencyInjection.IServiceCollection,StatsdClient.StatsdConfig,AppPerformanceMetricsSender.Extensions.PerfMetricsSenderOptions,AppPerformanceMetricsSender.Publishing.MetricTag[])">
             <summary>
             Add performance metrics sender that publishes to DataDog
             </summary>
             <param name="services"></param>
-            <param name="appPrefix">Identifier string for the application</param>
             <param name="datadogConfig"></param>
             <param name="options"></param>
             <param name="tags">Custom tags that will always be publised to DataDog</param>
@@ -26,11 +25,10 @@
             custom metrics for your app.
             </summary>
         </member>
-        <member name="M:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.#ctor(System.String,AppPerformanceMetricsSender.Publishing.MetricTag[])">
+        <member name="M:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.#ctor(AppPerformanceMetricsSender.Publishing.MetricTag[])">
             <summary>
             Instantiate the base class
             </summary>
-            <param name="appPrefix">Identifier for the app</param>
             <param name="tags">Custom tags i.e. name value pairs to associate with this metric</param>
         </member>
         <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.Value">
@@ -54,11 +52,6 @@
             <summary>
             Tags to associate with the metric for e.g. environment,
             country etc.
-            </summary>
-        </member>
-        <member name="P:AppPerformanceMetricsSender.PerformanceMetrics.NamedPerformanceMetric.AppGroup">
-            <summary>
-            App identifier string for e.g. "finance-api"
             </summary>
         </member>
     </members>

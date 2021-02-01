@@ -7,8 +7,8 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.CPU
     {
         private Process appProcess;
 
-        public ProcessCPUTimeInMillis(string appGroup, params MetricTag[] tags)
-            : base(appGroup, tags)
+        public ProcessCPUTimeInMillis(params MetricTag[] tags)
+            : base(tags)
         {
             appProcess = Process.GetCurrentProcess();
         }

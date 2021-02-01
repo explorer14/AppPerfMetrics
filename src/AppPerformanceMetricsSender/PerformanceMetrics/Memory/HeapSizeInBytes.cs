@@ -5,8 +5,8 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.Memory
 {
     internal sealed class HeapSizeInBytes : NamedPerformanceMetric
     {
-        public HeapSizeInBytes(string appPrefix, params MetricTag[] tags) 
-            : base(appPrefix, tags)
+        public HeapSizeInBytes(params MetricTag[] tags) 
+            : base(tags)
         {
         }
 

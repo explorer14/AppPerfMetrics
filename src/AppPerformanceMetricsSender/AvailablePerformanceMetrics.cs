@@ -10,7 +10,6 @@ namespace AppPerformanceMetricsSender
     internal static class AvailablePerformanceMetrics
     {
         public static IReadOnlyCollection<NamedPerformanceMetric> All(
-            string appGroup,
             params MetricTag[] tags)
         {
             var metricTypes = Assembly
@@ -23,7 +22,7 @@ namespace AppPerformanceMetricsSender
             var availableMetrics = new List<NamedPerformanceMetric>();
 
             return metricTypes.Values.Select(x => 
-                    Activator.CreateInstance(x, appGroup, tags))
+                    Activator.CreateInstance(x, tags))
                 .Cast<NamedPerformanceMetric>()
                 .ToList();
         }

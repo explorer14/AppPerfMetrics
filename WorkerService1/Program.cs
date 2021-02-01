@@ -1,14 +1,12 @@
 using AppPerformanceMetricsSender.Extensions;
-using AppPerformanceMetricsSender.PerformanceMetrics;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Reflection;
 
 namespace WorkerService1
 {
     public class Program
     {
-        public static void Main(string[] args) => 
+        public static void Main(string[] args) =>
             CreateHostBuilder(args).Build().Run();
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -16,7 +14,7 @@ namespace WorkerService1
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
-                    services.AddPerformanceMetricSender("my worker service",
+                    services.AddPerformanceMetricSender(
                         options: new PerfMetricsSenderOptions
                         {
                             MetricCollectionIntervalInMilliseconds = 2000

@@ -5,8 +5,8 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.CPU
 {
     internal class TotalActiveThreadCount : NamedPerformanceMetric
     {
-        public TotalActiveThreadCount(string appGroup, params MetricTag[] tags)
-            : base(appGroup, tags)
+        public TotalActiveThreadCount(params MetricTag[] tags)
+            : base(tags)
         {
         }
 

@@ -10,14 +10,12 @@ namespace AppPerformanceMetricsSender.Extensions
         /// Add performance metrics sender that publishes to DataDog
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="appPrefix">Identifier string for the application</param>
         /// <param name="datadogConfig"></param>
         /// <param name="options"></param>
         /// <param name="tags">Custom tags that will always be publised to DataDog</param>
         /// <returns><see cref="IServiceCollection"/></returns>
         public static IServiceCollection AddPerformanceMetricSender(
             this IServiceCollection services,
-            string appPrefix,
             StatsdConfig datadogConfig = null,
             PerfMetricsSenderOptions options = null,
             params MetricTag[] tags)
@@ -34,7 +32,6 @@ namespace AppPerformanceMetricsSender.Extensions
 
             AddMetricsAndHostedService(
                 services,
-                appPrefix,
                 options,
                 tags);
 
@@ -43,7 +40,6 @@ namespace AppPerformanceMetricsSender.Extensions
 
         private static void AddMetricsAndHostedService(
             IServiceCollection services,
-            string appGroup,
             PerfMetricsSenderOptions options = null,
             params MetricTag[] tags)
         {
@@ -55,7 +51,6 @@ namespace AppPerformanceMetricsSender.Extensions
 
             services.AddTransient(
                 svc => AvailablePerformanceMetrics.All(
-                    appGroup,
                     tags));
 
             services.AddSingleton<PerfMetricPublisherService>();

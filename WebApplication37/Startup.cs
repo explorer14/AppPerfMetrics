@@ -26,7 +26,6 @@ namespace WebApplication37
             var dataDogConfig = Configuration.GetSection("DataDogconfig").Get<StatsdConfig>();
 
             services.AddPerformanceMetricSender(
-                appPrefix: "my api",
                 datadogConfig: dataDogConfig,
                 options: new PerfMetricsSenderOptions
                 {
@@ -56,15 +55,4 @@ namespace WebApplication37
         }
     }
 
-    public class DummyMetric : NamedPerformanceMetric
-    {
-        public DummyMetric(string appGroup, params MetricTag[] tags)
-            : base(appGroup, tags)
-        {
-        }
-
-        public override long Value => 777;
-
-        public override string Name => "dummy";
-    }
 }

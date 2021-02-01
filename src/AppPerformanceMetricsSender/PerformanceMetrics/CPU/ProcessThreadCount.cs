@@ -7,8 +7,8 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.CPU
     {
         private Process appProcess;
 
-        public ProcessThreadCount(string appGroup, params MetricTag[] tags)
-            : base(appGroup, tags)
+        public ProcessThreadCount(params MetricTag[] tags)
+            : base(tags)
         {
             appProcess = Process.GetCurrentProcess();
         }

@@ -5,8 +5,8 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics.Memory
 {
     internal sealed class ManagedHeapAllocatedMemoryInBytes : NamedPerformanceMetric
     {
-        public ManagedHeapAllocatedMemoryInBytes(string appGroup, params MetricTag[] tags)
-            : base(appGroup, tags)
+        public ManagedHeapAllocatedMemoryInBytes(params MetricTag[] tags)
+            : base(tags)
         {
         }
 

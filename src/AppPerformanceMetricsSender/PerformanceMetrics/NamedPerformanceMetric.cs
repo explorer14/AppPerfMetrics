@@ -1,5 +1,4 @@
 ﻿using AppPerformanceMetricsSender.Publishing;
-using System;
 
 namespace AppPerformanceMetricsSender.PerformanceMetrics
 {
@@ -12,16 +11,8 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
         /// <summary>
         /// Instantiate the base class
         /// </summary>
-        /// <param name="appPrefix">Identifier for the app</param>
         /// <param name="tags">Custom tags i.e. name value pairs to associate with this metric</param>
-        protected NamedPerformanceMetric(string appPrefix, params MetricTag[] tags)
-        {
-            if (string.IsNullOrWhiteSpace(appPrefix))
-                throw new ArgumentException("App prefix cannot be null or empty", nameof(appPrefix));
-
-            AppGroup = appPrefix.ToLower().Replace(" ", "_");
-            Tags = tags;
-        }
+        protected NamedPerformanceMetric(params MetricTag[] tags) => Tags = tags;
 
         /// <summary>
         /// The value of this metric. For time based metrics prefer [milliseconds] to give yourself
@@ -33,7 +24,7 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
         /// <summary>
         /// Used by the publisher to fully identify the metric
         /// </summary>
-        public string FullyQualifiedName => $"{AppGroup}.{Name}";
+        public string FullyQualifiedName => $"perf.{Name}";
 
         /// <summary>
         /// Name for the metric. Will be lower cased and spaces removed
@@ -45,10 +36,5 @@ namespace AppPerformanceMetricsSender.PerformanceMetrics
         /// country etc.
         /// </summary>
         public MetricTag[] Tags { get; }
-
-        /// <summary>
-        /// App identifier string for e.g. "finance-api"
-        /// </summary>
-        protected string AppGroup { get; }
     }
 }
