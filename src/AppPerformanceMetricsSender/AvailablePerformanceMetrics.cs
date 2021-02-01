@@ -17,11 +17,11 @@ namespace AppPerformanceMetricsSender
                 .GetTypes()
                 .Where(x =>
                     x.IsSubclassOf(typeof(NamedPerformanceMetric)))
-                .ToDictionary(x=>x.FullName, y=>y);
+                .ToDictionary(x => x.FullName, y => y);
 
             var availableMetrics = new List<NamedPerformanceMetric>();
 
-            return metricTypes.Values.Select(x => 
+            return metricTypes.Values.Select(x =>
                     Activator.CreateInstance(x, tags))
                 .Cast<NamedPerformanceMetric>()
                 .ToList();

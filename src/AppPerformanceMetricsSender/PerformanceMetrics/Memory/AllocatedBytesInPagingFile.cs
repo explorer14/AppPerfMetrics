@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
-using AppPerformanceMetricsSender.PerformanceMetrics;
+﻿using AppPerformanceMetricsSender.PerformanceMetrics;
 using AppPerformanceMetricsSender.Publishing;
+using System.Diagnostics;
 
 internal sealed class AllocatedBytesInPagingFile : NamedPerformanceMetric
 {

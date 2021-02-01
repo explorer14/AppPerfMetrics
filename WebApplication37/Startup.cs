@@ -1,6 +1,4 @@
 using AppPerformanceMetricsSender.Extensions;
-using AppPerformanceMetricsSender.PerformanceMetrics;
-using AppPerformanceMetricsSender.Publishing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -54,5 +52,4 @@ namespace WebApplication37
             });
         }
     }
-
 }
