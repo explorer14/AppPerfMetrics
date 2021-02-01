@@ -7,7 +7,6 @@ namespace AppPerformanceMetricsSender.Publishing
 {
     internal class DataDogMetricsPublisher : IMetricsPublisher
     {
-        private readonly StatsdConfig config;
         private readonly IDogStatsd dogStatsdService;
 
         public DataDogMetricsPublisher(StatsdConfig config)
@@ -17,15 +16,11 @@ namespace AppPerformanceMetricsSender.Publishing
 
         public DataDogMetricsPublisher(IDogStatsd dogStatsdService, StatsdConfig config)
         {
-            this.config = config ??
-                throw new ArgumentException(
-                    "DataDog configuration cannot be null", nameof(config));
-
             this.dogStatsdService = dogStatsdService ??
-                throw new ArgumentException(
-                    "DataDog service cannot be null", nameof(dogStatsdService));
+                throw new ArgumentNullException(nameof(dogStatsdService));
 
-            dogStatsdService.Configure(config);
+            dogStatsdService.Configure(config ??
+                throw new ArgumentNullException(nameof(config)));
         }
 
         public void Publish(NamedPerformanceMetric metric)
@@ -34,8 +29,8 @@ namespace AppPerformanceMetricsSender.Publishing
             {
                 dogStatsdService.Gauge(
                         metric.FullyQualifiedName,
-                        metric.Value, 
-                        sampleRate:1,
+                        metric.Value,
+                        sampleRate: 1,
                         metric.Tags.Select(x => $"{x.Key}:{x.Value}").ToArray());
             }
         }

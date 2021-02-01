@@ -12,13 +12,13 @@ namespace AppPerformanceMetricsSender.Tests
         [Fact]
         public void ShouldThrowIfConfigNull()
         {
-            Assert.Throws<ArgumentException>(() => new DataDogMetricsPublisher(null));
+            Assert.Throws<ArgumentNullException>(() => new DataDogMetricsPublisher(null));
         }
 
         [Fact]
         public void ShouldThrowIfDogstatsDServiceIsNull()
         {
-            Assert.Throws<ArgumentException>(() => new DataDogMetricsPublisher(
+            Assert.Throws<ArgumentNullException>(() => new DataDogMetricsPublisher(
                 null,
                 FakeStatsDConfig.Default));
         }
